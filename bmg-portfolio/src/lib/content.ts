@@ -163,6 +163,14 @@ export const projects: {
 }[] = [
   // ---- Structures ----
   {
+    title: "Foggy Downtown Boulevard",
+    category: "Cityscape",
+    group: "Structures",
+    description:
+      "A fog-drenched city street at night, neon-lit high-rises fading into teal haze.",
+    image: "/images/work/foggy-city-street.jpg",
+  },
+  {
     title: "Transit Platform A&B",
     category: "Transit Station",
     group: "Structures",
@@ -358,6 +366,14 @@ export const projects: {
       "A golden-hour village with a steepled church, pumpkin patches, and falling leaves.",
     image: "/images/work/autumn-village.jpg",
   },
+  {
+    title: "Misty Pine Highlands",
+    category: "Landscape",
+    group: "Environments",
+    description:
+      "A sun-hazed forest clearing of towering pines and tall grass framing a distant peak.",
+    image: "/images/work/misty-forest.jpg",
+  },
 
   // ---- Models ----
   {
@@ -391,6 +407,22 @@ export const projects: {
     description:
       "A massive institutional block — modular wings, ribbon windows, and a fortified perimeter.",
     image: "/images/work/institutional-block.jpg",
+  },
+  {
+    title: "Metro Train Carriage",
+    category: "Vehicle Model",
+    group: "Models",
+    description:
+      "A bright transit carriage interior with rows of orange seats and grab poles under sunlit windows.",
+    image: "/images/work/train-carriage.jpg",
+  },
+  {
+    title: "Jungle Temple Ruins",
+    category: "Building Model",
+    group: "Models",
+    description:
+      "A weathered stone temple half-swallowed by roots, fronted by a worn flagstone path.",
+    image: "/images/work/temple-ruins.jpg",
   },
 ];
 
