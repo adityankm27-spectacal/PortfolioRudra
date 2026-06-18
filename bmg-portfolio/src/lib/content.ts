@@ -88,7 +88,7 @@ export const groups = [
     name: "Squid Game International",
     tag: "Obby / Challenge",
     members: "55.7K+",
-    rank: "[◇] Players Rank",
+    rank: "[◇] Contributor Rank",
     creator: "Kayocletian",
     logo: "/images/groups/icons/squid-game-international-icon.jpg",
   },
