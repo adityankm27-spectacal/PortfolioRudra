@@ -61,7 +61,7 @@ const fadeUp = {
 };
 
 function ContactPanel({ method, index }: { method: Method; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const [hovered, setHovered] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [copied, setCopied] = useState(false);
@@ -88,7 +88,7 @@ function ContactPanel({ method, index }: { method: Method; index: number }) {
 
   return (
     <motion.a
-      ref={ref as React.RefObject<HTMLAnchorElement>}
+      ref={ref}
       href={method.href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
