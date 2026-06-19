@@ -214,14 +214,14 @@ export default function HeroContent({
         <div className="relative flex flex-1 items-center justify-center">
           {/* Featured builds flanking the figure (lg+) — z-30 sits above the headline so cards neatly clip any overflowing text */}
           {leftBuilds.length > 0 && (
-            <div className="absolute inset-y-0 left-0 z-30 hidden w-[14rem] flex-col justify-center gap-3 lg:flex xl:w-[16rem]">
+            <div className="absolute inset-y-0 left-0 z-30 hidden w-[18rem] flex-col justify-center gap-3 lg:flex xl:w-[22rem]">
               {leftBuilds.map((build) => (
                 <FeaturedCard key={build.title} build={build} />
               ))}
             </div>
           )}
           {rightBuilds.length > 0 && (
-            <div className="absolute inset-y-0 right-0 z-30 hidden w-[14rem] flex-col justify-center gap-3 lg:flex xl:w-[16rem]">
+            <div className="absolute inset-y-0 right-0 z-30 hidden w-[18rem] flex-col justify-center gap-3 lg:flex xl:w-[22rem]">
               {rightBuilds.map((build) => (
                 <FeaturedCard key={build.title} build={build} />
               ))}
@@ -231,9 +231,9 @@ export default function HeroContent({
           {/* Giant headline — constrained to center zone on lg+ so it never overlaps the side cards */}
           <h1
             style={headlineStyle}
-            className="pointer-events-none absolute inset-y-0 z-10 flex select-none items-center justify-center overflow-hidden px-1 text-center font-display uppercase leading-[0.82] tracking-[-0.045em] text-bone will-change-transform left-0 right-0 lg:left-[14rem] lg:right-[14rem] xl:left-[16rem] xl:right-[16rem]"
+            className="pointer-events-none absolute inset-y-0 z-10 flex select-none items-center justify-center overflow-hidden px-1 text-center font-display uppercase leading-[0.82] tracking-[-0.045em] text-bone will-change-transform left-0 right-0 lg:left-[18rem] lg:right-[18rem] xl:left-[22rem] xl:right-[22rem]"
           >
-            <span className="block w-full whitespace-nowrap text-center text-[1.4rem] sm:text-[2.2rem] md:text-[3rem] lg:text-[2.4rem] xl:text-[2.9rem]" style={{ fontFamily: "var(--font-retro)" }}>
+            <span className="block w-full whitespace-nowrap text-center text-[1.4rem] sm:text-[2.2rem] md:text-[3rem] lg:text-[1.5rem] xl:text-[1.95rem]" style={{ fontFamily: "var(--font-retro)" }}>
               BUILDERMANGUY<span className="text-red">31</span>
             </span>
           </h1>

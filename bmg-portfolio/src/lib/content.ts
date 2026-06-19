@@ -468,24 +468,78 @@ export const projects: {
   },
 ];
 
-// Placeholder testimonials — replace with the real reviews from the live site.
-export const reviews = [
+export type Review = {
+  quote: string;
+  author: string;
+  role: string;
+  project: string;
+  rating: number;
+  accent: string; // avatar gradient accent (hex)
+  featured?: boolean;
+};
+
+export const reviews: Review[] = [
   {
     quote:
-      "BMG turned our vague concept into a fully realized world. The attention to lighting and detail was on another level.",
-    author: "Combat Assault Team",
-    role: "Game Studio",
+      "BUILDERMANGUY31, the best builder i've ever seen and/or hired — this guy never disappoints. He is a fast worker while also maintaining top-tier quality. 10/10 🔥",
+    author: "lizion33",
+    role: "VIP Client",
+    project: "Full Environment",
+    rating: 5,
+    accent: "#f59e0b",
+    featured: true,
   },
   {
     quote:
-      "Fast, communicative, and genuinely talented. Our build's visits jumped after the environment overhaul.",
-    author: "Illuminate Studios",
-    role: "Studio Partner",
+      "BUILDERMANGUY31 is a competent builder, modeler, and GUI artist whose work I've seen firsthand! If you need stylized GUI, high-poly models, or just a build done — give him a DM :)",
+    author: "SquaredCube",
+    role: "Client",
+    project: "GUI Design & Modeling",
+    rating: 5,
+    accent: "#7c5cff",
   },
   {
     quote:
-      "One of the most reliable builders I've worked with. Delivers exactly what's briefed — and then some.",
-    author: "Gotham's Shadow",
-    role: "Open World Project",
+      "I would highly recommend hiring builderman — he makes fast, quality builds & models. I would hire again without a second thought. It would be a mistake not to hire him.",
+    author: "Xander",
+    role: "Client",
+    project: "Building Package",
+    rating: 5,
+    accent: "#3b82f6",
   },
+  {
+    quote:
+      "Great work with awesome detailing which would provide a riveting experience while playing the map itself!",
+    author: "24lancelll",
+    role: "Client",
+    project: "Map Design",
+    rating: 5,
+    accent: "#22c55e",
+  },
+  {
+    quote:
+      "The model was very well made and delivered as fast as possible in a very timely manner. I would recommend to future customers!!!",
+    author: "Gold_KingVon2001",
+    role: "Client",
+    project: "Custom Model",
+    rating: 5,
+    accent: "#eab308",
+  },
+  {
+    quote:
+      "He was a pretty good builder. We had some miscommunication issues but in the end I really liked the final product.",
+    author: "fxnix",
+    role: "Client",
+    project: "Interior Design",
+    rating: 4,
+    accent: "#ef4444",
+  },
+];
+
+// Aggregate social-proof figures shown above the testimonials.
+export const reviewStats = [
+  { value: "5.0", label: "Average Rating" },
+  { value: "20+", label: "Successful Collaborations" },
+  { value: "100K+", label: "Combined Community" },
+  { value: "7+", label: "Studios & Creators" },
 ];
