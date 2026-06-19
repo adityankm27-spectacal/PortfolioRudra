@@ -45,6 +45,11 @@ export default function HeroContent({
     };
   }, []);
 
+  // Split featured builds into two columns that flank the figure on large screens.
+  const splitAt = Math.ceil(featured.length / 2);
+  const leftBuilds = featured.slice(0, splitAt);
+  const rightBuilds = featured.slice(splitAt);
+
   // ── derived scroll styles ──
   const figureStyle = {
     transform: `translateY(${lerp(0, -120, p)}px) scale(${lerp(1, 0.82, p)})`,
@@ -96,12 +101,12 @@ export default function HeroContent({
         >
           <defs>
             <radialGradient id="redCore" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="var(--color-red)" stopOpacity="0.95" />
-              <stop offset="70%" stopColor="var(--color-red-deep)" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="var(--color-red-deep)" stopOpacity="0.6" />
+              <stop offset="0%" stopColor="var(--color-red)" stopOpacity="0.5" />
+              <stop offset="55%" stopColor="var(--color-red-deep)" stopOpacity="0.32" />
+              <stop offset="100%" stopColor="var(--color-red-deep)" stopOpacity="0" />
             </radialGradient>
           </defs>
-          <circle cx="300" cy="300" r="150" fill="url(#redCore)" />
+          <circle cx="300" cy="300" r="200" fill="url(#redCore)" />
           {[210, 270, 298].map((r) => (
             <circle key={r} cx="300" cy="300" r={r} fill="none" stroke="var(--color-line)" strokeWidth="1" />
           ))}
@@ -110,15 +115,12 @@ export default function HeroContent({
         </svg>
       </div>
 
-      {/* Roblox emblem sitting inside the red core (stays upright, doesn't spin) */}
+      {/* Roblox logo as the centerpiece (stays upright, doesn't spin) */}
       <div
         style={radarStyle}
         className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-screen items-center justify-center will-change-transform"
       >
-        <RobloxMark
-          uid="hero-core-mark"
-          className="h-[42vw] max-h-[300px] w-[42vw] max-w-[300px] text-white/[0.22] [filter:drop-shadow(0_2px_6px_rgba(0,0,0,0.3))]"
-        />
+        <RobloxCoreLogo className="h-[78vw] max-h-[600px] w-[78vw] max-w-[600px] opacity-[0.45] [filter:drop-shadow(0_0_60px_rgba(168,163,154,0.22))_drop-shadow(0_0_140px_rgba(232,38,29,0.10))]" />
       </div>
 
       {/* Roblox glyphs + technical HUD readouts */}
@@ -210,12 +212,28 @@ export default function HeroContent({
 
         {/* Center stage */}
         <div className="relative flex flex-1 items-center justify-center">
-          {/* Giant headline */}
+          {/* Featured builds flanking the figure (lg+) — z-30 sits above the headline so cards neatly clip any overflowing text */}
+          {leftBuilds.length > 0 && (
+            <div className="absolute inset-y-0 left-0 z-30 hidden w-[14rem] flex-col justify-center gap-3 lg:flex xl:w-[16rem]">
+              {leftBuilds.map((build) => (
+                <FeaturedCard key={build.title} build={build} />
+              ))}
+            </div>
+          )}
+          {rightBuilds.length > 0 && (
+            <div className="absolute inset-y-0 right-0 z-30 hidden w-[14rem] flex-col justify-center gap-3 lg:flex xl:w-[16rem]">
+              {rightBuilds.map((build) => (
+                <FeaturedCard key={build.title} build={build} />
+              ))}
+            </div>
+          )}
+
+          {/* Giant headline — constrained to center zone on lg+ so it never overlaps the side cards */}
           <h1
             style={headlineStyle}
-            className="pointer-events-none absolute inset-0 z-10 flex select-none items-center justify-center px-2 text-center font-display uppercase leading-[0.82] tracking-[-0.045em] text-bone will-change-transform"
+            className="pointer-events-none absolute inset-y-0 z-10 flex select-none items-center justify-center overflow-hidden px-1 text-center font-display uppercase leading-[0.82] tracking-[-0.045em] text-bone will-change-transform left-0 right-0 lg:left-[14rem] lg:right-[14rem] xl:left-[16rem] xl:right-[16rem]"
           >
-            <span className="whitespace-nowrap text-[1.6rem] sm:text-[2.7rem] md:text-[3.7rem] lg:text-[4.9rem] xl:text-[6.1rem]">
+            <span className="block w-full whitespace-nowrap text-center text-[1.4rem] sm:text-[2.2rem] md:text-[3rem] lg:text-[2.4rem] xl:text-[2.9rem]" style={{ fontFamily: "var(--font-retro)" }}>
               BUILDERMANGUY<span className="text-red">31</span>
             </span>
           </h1>
@@ -252,9 +270,9 @@ export default function HeroContent({
         {/* Ground tick band */}
         <div className="tick-band relative z-10 h-6 w-full opacity-70" />
 
-        {/* Featured builds strip */}
+        {/* Featured builds strip (mobile / tablet — on lg+ these flank the figure) */}
         {featured.length > 0 && (
-          <div className="relative z-10 mt-6">
+          <div className="relative z-10 mt-6 lg:hidden">
             <p className="eyebrow mb-3 flex items-center gap-2 text-bone">
               <span className="h-1.5 w-1.5 rounded-full bg-red" /> Featured Builds
             </p>
@@ -332,6 +350,51 @@ export default function HeroContent({
         <span className="h-6 w-px animate-pulse bg-bone-dim/50" />
       </div>
     </section>
+  );
+}
+
+function FeaturedCard({ build }: { build: FeaturedBuild }) {
+  return (
+    <a
+      href="#work"
+      className="group relative block aspect-video w-full overflow-hidden rounded-xl border border-line bg-ink-card shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors hover:border-bone-dim/40"
+    >
+      {build.hasImage && (
+        <Image
+          src={build.image}
+          alt={build.title}
+          fill
+          sizes="240px"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+      <span className="absolute right-2 top-2 rounded-full border border-line/80 bg-ink/60 px-2 py-0.5 text-[0.58rem] font-medium uppercase tracking-wider text-bone backdrop-blur-sm">
+        {build.metric}
+      </span>
+      <h3 className="absolute inset-x-2 bottom-2 truncate font-display text-[0.7rem] uppercase leading-tight tracking-tight text-bone sm:text-sm">
+        {build.title}
+      </h3>
+    </a>
+  );
+}
+
+function RobloxCoreLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} aria-label="Roblox" role="img">
+      <defs>
+        <linearGradient id="rbxCoreSilver" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#fdfdfd" />
+          <stop offset="50%" stopColor="#d7d7d9" />
+          <stop offset="100%" stopColor="#9b9ba0" />
+        </linearGradient>
+        <mask id="rbxCoreMask">
+          <rect x="16" y="16" width="68" height="68" fill="white" transform="rotate(17 50 50)" />
+          <rect x="40" y="40" width="20" height="20" fill="black" transform="rotate(17 50 50)" />
+        </mask>
+      </defs>
+      <rect width="100" height="100" fill="url(#rbxCoreSilver)" mask="url(#rbxCoreMask)" />
+    </svg>
   );
 }
 

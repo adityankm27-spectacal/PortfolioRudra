@@ -77,6 +77,11 @@ export const featuredBuilds: {
     metric: "Featured",
     image: "/images/work/torii-garden.jpg",
   },
+  {
+    title: "Alpine Gate Facility",
+    metric: "Featured",
+    image: "/images/work/mountain-facility.jpg",
+  },
 ];
 
 export const stats = [
