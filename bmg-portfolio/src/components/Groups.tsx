@@ -45,7 +45,6 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const reversed = index % 2 === 1;
-  const fullWidth = index % 3 === 2; // every 3rd card is a wide showcase
 
   const onMove = (e: React.MouseEvent) => {
     const r = ref.current?.getBoundingClientRect();
@@ -54,7 +53,7 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
   };
 
   const Media = (
-    <div className={cn("relative overflow-hidden", fullWidth ? "h-64 sm:h-80 lg:h-[26rem]" : "min-h-[16rem] lg:min-h-full")}>
+    <div className="relative h-60 overflow-hidden sm:h-72 lg:h-full lg:min-h-[24rem]">
       <Image
         src={g.cover}
         alt={g.name}
@@ -64,13 +63,7 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
       />
       {/* cinematic overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
-      <div
-        className={cn(
-          "absolute inset-0 bg-gradient-to-r from-transparent to-ink",
-          reversed && !fullWidth ? "bg-gradient-to-r from-ink/15 via-transparent to-ink" : "from-ink/15 via-transparent to-ink",
-          fullWidth && "bg-gradient-to-t from-ink via-ink/20 to-transparent"
-        )}
-      />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/15 via-transparent to-ink" />
       {/* red ambient lighting */}
       <div className="absolute inset-0 bg-gradient-to-tr from-red/20 via-red/5 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
       {/* vignette */}
@@ -108,14 +101,14 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
   );
 
   const Content = (
-    <div className={cn("relative flex flex-col justify-center p-6 sm:p-8", fullWidth && "lg:p-10")}>
+    <div className="relative flex flex-col justify-center p-6 sm:p-8">
       <p className="eyebrow mb-2 text-red">{g.role}</p>
       <p className="max-w-xl text-sm leading-relaxed text-bone-dim sm:text-base">{g.blurb}</p>
 
       {/* stats */}
-      <div className={cn("mt-6 flex flex-wrap gap-x-8 gap-y-4", fullWidth && "lg:gap-x-12")}>
+      <div className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
         {g.stats.map((s) => (
-          <StatBlock key={s.label} value={s.value} label={s.label} size={fullWidth ? "lg" : "md"} />
+          <StatBlock key={s.label} value={s.value} label={s.label} />
         ))}
       </div>
 
@@ -167,17 +160,10 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
         }}
       />
 
-      {fullWidth ? (
-        <div className="relative">
-          {Media}
-          {Content}
-        </div>
-      ) : (
-        <div className={cn("relative grid lg:grid-cols-[1.45fr_1fr]", reversed && "lg:[direction:rtl]")}>
-          <div className="lg:[direction:ltr]">{Media}</div>
-          <div className="lg:[direction:ltr]">{Content}</div>
-        </div>
-      )}
+      <div className={cn("relative grid lg:grid-cols-[1.45fr_1fr]", reversed && "lg:[direction:rtl]")}>
+        <div className="lg:[direction:ltr]">{Media}</div>
+        <div className="lg:[direction:ltr]">{Content}</div>
+      </div>
     </motion.div>
   );
 }
