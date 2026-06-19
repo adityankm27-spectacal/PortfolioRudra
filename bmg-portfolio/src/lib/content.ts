@@ -124,64 +124,162 @@ export const skills = [
   },
 ];
 
-// Groups / studios collaborated with.
-export const groups = [
+// Groups / studios collaborated with — enriched as cinematic case studies.
+export type Group = {
+  name: string;
+  tag: string;
+  members: string;
+  rank: string;
+  creator: string;
+  logo: string;
+  cover: string;
+  role: string;
+  blurb: string;
+  built: string[];
+  tech: string[];
+  stats: { value: string; label: string }[];
+};
+
+export const groups: Group[] = [
   {
     name: "Squid Game International",
     tag: "Obby / Challenge",
     members: "55.7K+",
-    rank: "[◇] Contributor Rank",
+    rank: "Contributor",
     creator: "Kayocletian",
     logo: "/images/groups/icons/squid-game-international-icon.jpg",
+    cover: "/images/work/foggy-city-street.jpg",
+    role: "Environment & Map Contributor",
+    blurb:
+      "Built challenge arenas and themed environments for one of the largest Squid Game experiences on the platform, balancing dramatic visuals with performance at scale.",
+    built: ["Environment Design", "Gameplay Areas", "Optimization", "Visual Polish"],
+    tech: ["Roblox Studio", "Blender", "Lighting & FX"],
+    stats: [
+      { value: "55.7K+", label: "Members" },
+      { value: "2M+", label: "Visits" },
+      { value: "12+", label: "Features Built" },
+    ],
   },
   {
     name: "Illuminate Studios Games",
     tag: "Studio Partner",
     members: "33.1K+",
-    rank: "Development Contributor Rank",
+    rank: "Development Contributor",
     creator: "one",
     logo: "/images/groups/icons/illuminate-studios-icon.jpg",
+    cover: "/images/work/expo-hall.jpg",
+    role: "Development Contributor",
+    blurb:
+      "Partnered as a core build contributor delivering custom assets, interiors and modular environment systems that shipped across multiple studio titles.",
+    built: ["World Building", "Custom Systems", "3D Modeling", "Interiors"],
+    tech: ["Roblox Studio", "Blender", "Modular Kits"],
+    stats: [
+      { value: "33.1K+", label: "Members" },
+      { value: "8+", label: "Months" },
+      { value: "15+", label: "Features Built" },
+    ],
   },
   {
     name: "Combat Assault Team",
     tag: "Combat / FPS",
     members: "26.9K+",
-    rank: "Recruit Rank",
+    rank: "Recruit",
     creator: "joshuaholic",
     logo: "/images/groups/icons/combat-assault-team-icon.jpg",
+    cover: "/images/work/mountain-facility.jpg",
+    role: "Map & Environment Builder",
+    blurb:
+      "Designed combat-ready maps and tactical environments with clear sightlines, cover flow and atmospheric lighting tuned for fast-paced FPS gameplay.",
+    built: ["Environment Design", "Gameplay Areas", "Optimization", "Visual Polish"],
+    tech: ["Roblox Studio", "Terrain", "Lighting & FX"],
+    stats: [
+      { value: "26.9K+", label: "Members" },
+      { value: "6+", label: "Maps" },
+      { value: "10+", label: "Features Built" },
+    ],
   },
   {
     name: "SlicerStudios",
     tag: "Game Studio",
     members: "25.5K+",
-    rank: "Supporter Rank",
+    rank: "Supporter",
     creator: "SlicerStudios",
     logo: "/images/groups/icons/slicer-studios-icon.jpg",
+    cover: "/images/work/torii-garden.jpg",
+    role: "Environment Builder",
+    blurb:
+      "Crafted detailed showcase environments and props that elevated the studio's flagship experiences with a polished, cohesive art direction.",
+    built: ["Environment Design", "World Building", "Visual Polish"],
+    tech: ["Roblox Studio", "Blender"],
+    stats: [
+      { value: "25.5K+", label: "Members" },
+      { value: "5+", label: "Builds" },
+      { value: "8+", label: "Features Built" },
+    ],
   },
   {
     name: "ovalodo",
     tag: "Creative Studio",
     members: "13K+",
-    rank: "Contributor Rank",
+    rank: "Contributor",
     creator: "evan",
     logo: "/images/groups/icons/ovalodo-icon.jpg",
+    cover: "/images/work/japanese-street.jpg",
+    role: "Creative Contributor",
+    blurb:
+      "Contributed stylized environments and creative set-pieces, collaborating closely on art direction for experimental experiences.",
+    built: ["Environment Design", "Custom Systems", "Visual Polish"],
+    tech: ["Roblox Studio", "Blender"],
+    stats: [
+      { value: "13K+", label: "Members" },
+      { value: "4+", label: "Builds" },
+      { value: "7+", label: "Features Built" },
+    ],
   },
   {
     name: "Ravyn's Rise",
     tag: "Open World",
     members: "11.8K+",
-    rank: "Contributor Rank",
+    rank: "Contributor",
     creator: "Versed",
     logo: "/images/groups/icons/ravyns-rise-icon.jpg",
+    cover: "/images/work/river-valley.jpg",
+    role: "Open-World Builder",
+    blurb:
+      "Built explorable open-world regions with believable terrain, landmarks and atmosphere designed to reward exploration.",
+    built: ["World Building", "Environment Design", "Optimization"],
+    tech: ["Roblox Studio", "Terrain", "Lighting & FX"],
+    stats: [
+      { value: "11.8K+", label: "Members" },
+      { value: "3+", label: "Regions" },
+      { value: "9+", label: "Features Built" },
+    ],
   },
   {
     name: "RLightning Studios",
     tag: "Game Studio",
     members: "10.5K+",
-    rank: "Supporter Rank",
+    rank: "Supporter",
     creator: "alexjouq",
     logo: "/images/groups/icons/rlightning-studios-icon.jpg",
+    cover: "/images/work/glass-house.jpg",
+    role: "Environment Builder",
+    blurb:
+      "Delivered environment builds and visual polish supporting the studio's released experiences and ongoing projects.",
+    built: ["Environment Design", "Visual Polish", "Optimization"],
+    tech: ["Roblox Studio", "Blender"],
+    stats: [
+      { value: "10.5K+", label: "Members" },
+      { value: "4+", label: "Builds" },
+      { value: "6+", label: "Features Built" },
+    ],
   },
+];
+
+export const groupTrust = [
+  { value: "175K+", label: "Community Members" },
+  { value: "10+", label: "Collaborations" },
+  { value: "5.0", label: "Client Reviews" },
 ];
 
 // The four categories shown as filter tabs in "Selected Builds".
