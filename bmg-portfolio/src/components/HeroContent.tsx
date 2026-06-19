@@ -5,10 +5,24 @@ import Image from "next/image";
 import { profile, specialties, heroTags } from "@/lib/content";
 import HireButton from "@/components/HireButton";
 import { PixelCanvas } from "@/components/ui/pixel-perfect-hero";
+import { RobloxMark } from "@/components/RobloxBrand";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
+type FeaturedBuild = {
+  title: string;
+  metric: string;
+  image: string;
+  hasImage: boolean;
+};
+
+export default function HeroContent({
+  hasPhoto,
+  featured = [],
+}: {
+  hasPhoto: boolean;
+  featured?: FeaturedBuild[];
+}) {
   // 0 → 1 scroll progress across the first viewport
   const [p, setP] = useState(0);
 
@@ -48,6 +62,10 @@ export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
   const uiStyle = { opacity: lerp(1, 0, uiFade), transform: `translateY(${lerp(0, -40, uiFade)}px)` };
   const uiOpacityOnly = { opacity: lerp(1, 0, uiFade) };
   const pixelStyle = { transform: `translateY(${lerp(0, -80, p)}px)` };
+  const decorStyle = {
+    opacity: lerp(0.55, 0, Math.min(p / 0.55, 1)),
+    transform: `translateY(${lerp(0, -50, p)}px)`,
+  };
 
   return (
     <section
@@ -69,7 +87,7 @@ export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
       {/* Radar / target backdrop */}
       <div
         style={radarStyle}
-        className="pointer-events-none absolute inset-0 z-0 flex -translate-y-6 items-center justify-center will-change-transform"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-screen items-center justify-center will-change-transform"
       >
         <svg
           viewBox="0 0 600 600"
@@ -92,13 +110,68 @@ export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
         </svg>
       </div>
 
+      {/* Roblox emblem sitting inside the red core (stays upright, doesn't spin) */}
+      <div
+        style={radarStyle}
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-screen items-center justify-center will-change-transform"
+      >
+        <RobloxMark
+          uid="hero-core-mark"
+          className="h-[42vw] max-h-[300px] w-[42vw] max-w-[300px] text-white/[0.22] [filter:drop-shadow(0_2px_6px_rgba(0,0,0,0.3))]"
+        />
+      </div>
+
+      {/* Roblox glyphs + technical HUD readouts */}
+      <div
+        style={decorStyle}
+        className="pointer-events-none absolute inset-0 z-0 hidden select-none will-change-transform md:block"
+      >
+        <RobloxGlyph uid="rg1" className="absolute left-[11%] top-[26%] h-12 w-12 rotate-6 text-bone-dim/25" />
+        <RobloxGlyph uid="rg2" className="absolute left-[8%] top-[66%] h-9 w-9 -rotate-12 text-bone-dim/20" />
+        <RobloxGlyph uid="rg3" className="absolute right-[11%] top-[26%] h-12 w-12 -rotate-6 text-bone-dim/25" />
+        <RobloxGlyph uid="rg4" className="absolute right-[9%] top-[62%] h-14 w-14 rotate-12 text-bone-dim/25" />
+
+        <span className="absolute left-[63%] top-[13%] font-mono text-[0.58rem] uppercase tracking-[0.2em] text-bone-dim/35">
+          MESH_COMPLEXITY_INDEX_0.8
+        </span>
+        <span className="absolute left-[9%] top-[40%] font-mono text-[0.55rem] tracking-[0.15em] text-bone-dim/30">
+          (X: 105.4, Y: 22.1, Z: -15.8)
+        </span>
+        <span className="absolute left-[9%] top-[46%] font-mono text-[0.58rem] uppercase tracking-[0.2em] text-red/40">
+          MESH_COMPLEXITY_INDEX_0.8
+        </span>
+        <span className="absolute right-[9%] top-[40%] font-mono text-[0.55rem] tracking-[0.15em] text-bone-dim/30">
+          (X: 105.4, Y: 22.1, Z: -15.6)
+        </span>
+        <span className="absolute right-[9%] top-[62%] font-mono text-[0.58rem] uppercase tracking-[0.2em] text-red/40">
+          MESH_COMPLEXITY_INDEX_0.8
+        </span>
+
+        {/* Wireframe cube, bottom right */}
+        <svg
+          viewBox="0 0 100 100"
+          className="absolute bottom-[12%] right-[7%] h-16 w-16 text-bone-dim/25"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          aria-hidden
+        >
+          <path d="M30 22 L70 22 L78 32 L78 72 L38 72 L30 62 Z" />
+          <path d="M30 22 L38 32 L78 32 M38 32 L38 72" />
+        </svg>
+      </div>
+
       {/* Vignette */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,var(--color-ink)_92%)]" />
 
       <div className="relative z-30 mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-8 pt-6 sm:px-8">
         {/* Top: tags + availability */}
         <div style={uiStyle} className="flex items-start justify-between gap-4">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-red/40 bg-red/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-wider text-bone">
+              <RobloxMark uid="hero-rbx" className="h-3.5 w-3.5 text-red" />
+              Roblox Developer
+            </span>
             {heroTags.map((tag) => (
               <span
                 key={tag}
@@ -158,7 +231,7 @@ export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
           {/* The figure */}
           <div
             style={figureStyle}
-            className="relative z-20 h-[52vh] max-h-[600px] min-h-[340px] w-full max-w-[480px] will-change-transform"
+            className="relative z-20 h-[44vh] max-h-[500px] min-h-[300px] w-full max-w-[440px] will-change-transform"
           >
             {hasPhoto ? (
               <Image
@@ -179,13 +252,65 @@ export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
         {/* Ground tick band */}
         <div className="tick-band relative z-10 h-6 w-full opacity-70" />
 
-        {/* Bottom row */}
-        <div style={uiOpacityOnly} className="mt-6 grid grid-cols-1 items-end gap-6 md:grid-cols-3">
-          <div className="max-w-xs">
-            <p className="eyebrow mb-2 flex items-center gap-2 text-bone">
+        {/* Featured builds strip */}
+        {featured.length > 0 && (
+          <div className="relative z-10 mt-6">
+            <p className="eyebrow mb-3 flex items-center gap-2 text-bone">
+              <span className="h-1.5 w-1.5 rounded-full bg-red" /> Featured Builds
+            </p>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {featured.map((build) => (
+                <a
+                  key={build.title}
+                  href="#work"
+                  className="group relative block aspect-video overflow-hidden rounded-xl border border-line bg-ink-card"
+                >
+                  {build.hasImage && (
+                    <Image
+                      src={build.image}
+                      alt={build.title}
+                      fill
+                      sizes="(max-width: 768px) 33vw, 240px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+                  <span className="absolute right-2 top-2 rounded-full border border-line/80 bg-ink/60 px-2 py-0.5 text-[0.58rem] font-medium uppercase tracking-wider text-bone backdrop-blur-sm">
+                    {build.metric}
+                  </span>
+                  <h3 className="absolute inset-x-2 bottom-2 truncate font-display text-[0.7rem] uppercase leading-tight tracking-tight text-bone sm:text-sm">
+                    {build.title}
+                  </h3>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Bottom row — compact "about" lives here (stays readable on scroll) */}
+        <div className="mt-6 grid grid-cols-1 items-end gap-6 md:grid-cols-3">
+          <div id="about" className="md:col-span-2 scroll-mt-24">
+            <p className="eyebrow mb-3 flex items-center gap-2 text-bone">
               <span className="h-1.5 w-1.5 rounded-full bg-red" /> About BMG
             </p>
-            <p className="text-sm leading-relaxed text-bone-dim">{profile.intro}</p>
+            <div className="space-y-2 text-sm leading-relaxed text-bone-dim">
+              {profile.bio.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+              {[
+                { v: "9.7M", l: "Top build visits" },
+                { v: `${profile.yearsExperience}+`, l: `Years since ${profile.since}` },
+                { v: "6+", l: "Showcases" },
+                { v: "7+", l: "Studios worked with" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <p className="font-display text-lg leading-none text-bone">{s.v}</p>
+                  <p className="mt-1 text-[0.58rem] uppercase tracking-wider text-bone-dim">{s.l}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex justify-start md:justify-center">
@@ -207,6 +332,20 @@ export default function HeroContent({ hasPhoto }: { hasPhoto: boolean }) {
         <span className="h-6 w-px animate-pulse bg-bone-dim/50" />
       </div>
     </section>
+  );
+}
+
+function RobloxGlyph({ uid, className = "" }: { uid: string; className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} aria-hidden>
+      <defs>
+        <mask id={uid}>
+          <rect x="16" y="16" width="68" height="68" rx="7" fill="white" transform="rotate(17 50 50)" />
+          <rect x="40" y="40" width="20" height="20" rx="2" fill="black" transform="rotate(17 50 50)" />
+        </mask>
+      </defs>
+      <rect width="100" height="100" fill="currentColor" mask={`url(#${uid})`} />
+    </svg>
   );
 }
 

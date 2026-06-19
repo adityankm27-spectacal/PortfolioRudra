@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { navLinks, profile } from "@/lib/content";
 import HireButton from "@/components/HireButton";
 import HeroNav from "@/components/HeroNav";
+import { RobloxMark } from "@/components/RobloxBrand";
 
 export default function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -24,14 +25,22 @@ export default function SiteNav() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
         {/* Logo */}
-        <a href="#top" className="flex items-center gap-2.5 group">
-          <span className="grid h-7 w-7 place-items-center bg-red text-white font-display text-sm leading-none">
-            B
+        <div className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-2.5 group">
+            <span className="grid h-7 w-7 place-items-center bg-red text-white font-display text-sm leading-none">
+              B
+            </span>
+            <span className="hidden sm:inline font-display text-sm tracking-tight">
+              {profile.name}
+            </span>
+          </a>
+          <span className="hidden items-center gap-1.5 rounded-full border border-line px-2.5 py-1 lg:inline-flex">
+            <RobloxMark uid="nav-rbx" className="h-3.5 w-3.5 text-red" />
+            <span className="text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-bone-dim">
+              Roblox Developer
+            </span>
           </span>
-          <span className="hidden sm:inline font-display text-sm tracking-tight">
-            {profile.name}
-          </span>
-        </a>
+        </div>
 
         {/* Center links (desktop) — sliding-cursor nav */}
         <div className="hidden md:block">

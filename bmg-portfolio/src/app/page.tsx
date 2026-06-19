@@ -1,6 +1,5 @@
 import SiteNav from "@/components/SiteNav";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
 import Groups from "@/components/Groups";
 import Work from "@/components/Work";
 import Reviews from "@/components/Reviews";
@@ -13,7 +12,6 @@ export default function Home() {
       <SiteNav />
       <main>
         <Hero />
-        <About />
         <Groups />
         <Work />
         <Reviews />

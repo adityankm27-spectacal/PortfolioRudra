@@ -8,7 +8,8 @@
   --color-bone: #f4f1ea;
   --color-bone-dim: #a8a39a;
   --color-line: #2a2a2e;
-  --color-red: #e8261d;
+  /* Official Roblox brand red */
+  --color-red: #e2231a;
   --color-red-deep: #b3140d;
 
   --animate-marquee: marquee 26s linear infinite;

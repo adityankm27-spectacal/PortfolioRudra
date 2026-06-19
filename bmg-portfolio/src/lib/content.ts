@@ -11,6 +11,18 @@ export const profile = {
   tagline: "Creating amazing gaming experiences.",
   intro:
     "Transforming ideas into immersive Roblox environments with attention to detail and technical excellence.",
+  bio: [
+    "I'm BUILDERMANGUY31, an 18-year-old passionate Roblox builder with 4+ years of experience creating immersive environments and structures. I have a proven track record of delivering high-quality builds that exceed expectations.",
+    "I specialize in creating detailed, functional, and optimized builds that enhance player experiences. My expertise spans both Roblox Studio and Blender, allowing me to create custom assets and environments that stand out.",
+    "My builds have been featured in popular Roblox games with over 9.7 million and 1.6 million visits, demonstrating my ability to create engaging content that players love.",
+  ],
+  whyHireMe: [
+    "Always instantaneous to respond",
+    "Will complete your projects before the given deadline",
+    "Flexible with payment options",
+    "Fluent in English — a good communicator and team worker",
+    "Available 2–8 hours daily depending on project needs",
+  ],
   // Hero photo lives in /public/images/profile.png (transparent cutout recommended).
   photo: "/images/profile.png",
   availability: "Available for hire",
@@ -25,7 +37,8 @@ export const contact = {
 };
 
 export const navLinks = [
-  { label: "About", href: "#about" },
+  // "About" lives in the hero fold, so it points back to the top.
+  { label: "About", href: "#top" },
   { label: "Groups", href: "#groups" },
   { label: "Work", href: "#work" },
   { label: "Reviews", href: "#reviews" },
@@ -41,6 +54,30 @@ export const specialties = [
 ];
 
 export const heroTags = ["Roblox Studio", "Environments", "4+ Years"];
+
+// The standout builds surfaced directly in the hero as a "Featured Builds" strip.
+// `image` should match an existing screenshot in /public/images/work/.
+export const featuredBuilds: {
+  title: string;
+  metric: string;
+  image: string;
+}[] = [
+  {
+    title: "Foggy Downtown Boulevard",
+    metric: "9.7M visits",
+    image: "/images/work/foggy-city-street.jpg",
+  },
+  {
+    title: "Grand Cathedral",
+    metric: "1.6M visits",
+    image: "/images/work/cathedral.jpg",
+  },
+  {
+    title: "Torii Shrine Grounds",
+    metric: "Featured",
+    image: "/images/work/torii-garden.jpg",
+  },
+];
 
 export const stats = [
   { value: "9.7M", label: "Visits on a featured build" },

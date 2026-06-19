@@ -1,4 +1,5 @@
 import { profile, navLinks } from "@/lib/content";
+import { RobloxMark, RobloxWordmark } from "@/components/RobloxBrand";
 
 export default function Footer() {
   return (
@@ -23,9 +24,18 @@ export default function Footer() {
           ))}
         </nav>
 
-        <p className="text-xs text-bone-dim">
-          © {new Date().getFullYear()} {profile.name}. Built in Roblox Studio &amp; beyond.
-        </p>
+        <div className="flex flex-col gap-2 sm:items-end">
+          <span className="flex items-center gap-2 text-bone-dim">
+            <span className="text-[0.6rem] font-semibold uppercase tracking-[0.22em]">
+              Built on
+            </span>
+            <RobloxMark uid="footer-rbx" className="h-4 w-4 text-red" />
+            <RobloxWordmark className="h-3 w-auto text-bone" />
+          </span>
+          <p className="text-xs text-bone-dim">
+            © {new Date().getFullYear()} {profile.name}. Roblox Environment Builder.
+          </p>
+        </div>
       </div>
     </footer>
   );
