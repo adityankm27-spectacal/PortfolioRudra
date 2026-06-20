@@ -6,22 +6,15 @@ import { motion, useInView } from "framer-motion";
 import { Check, Users, ArrowUpRight } from "lucide-react";
 import { groups, groupTrust, type Group } from "@/lib/content";
 import SectionHeading from "./SectionHeading";
+import CountUp from "./CountUp";
 import { cn } from "@/lib/utils";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 36 },
-  show: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
+import { cardRise } from "@/lib/motion";
 
 function StatBlock({ value, label, size = "md" }: { value: string; label: string; size?: "md" | "lg" }) {
   return (
     <div>
       <p className={cn("font-display leading-none text-bone", size === "lg" ? "text-3xl sm:text-4xl" : "text-2xl")}>
-        {value}
+        <CountUp value={value} />
       </p>
       <p className="mt-1 text-[0.58rem] uppercase tracking-[0.2em] text-bone-dim">{label}</p>
     </div>
@@ -140,7 +133,7 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
     <motion.div
       ref={ref}
       custom={index}
-      variants={fadeUp}
+      variants={cardRise}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
       onMouseMove={onMove}
@@ -181,7 +174,9 @@ function TrustBar() {
       <div className="relative grid grid-cols-3 divide-line sm:divide-x">
         {groupTrust.map((s) => (
           <div key={s.label} className="flex flex-col items-center gap-1 px-3 py-6 text-center">
-            <p className="font-display text-2xl leading-none text-bone sm:text-4xl">{s.value}</p>
+            <p className="font-display text-2xl leading-none text-bone sm:text-4xl">
+              <CountUp value={s.value} />
+            </p>
             <p className="text-[0.58rem] uppercase tracking-[0.18em] text-bone-dim sm:text-[0.62rem]">{s.label}</p>
           </div>
         ))}

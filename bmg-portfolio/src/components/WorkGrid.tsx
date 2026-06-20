@@ -1,9 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
 import type { WorkCategory } from "@/lib/content";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { slugify } from "@/lib/utils";
+import { cardRise } from "@/lib/motion";
 
 export type WorkItem = {
   title: string;
@@ -23,8 +26,47 @@ export default function WorkGrid({
   categories: readonly WorkCategory[];
 }) {
   const PER_PAGE = 6;
+  const gridRef = useRef<HTMLDivElement>(null);
+  const gridInView = useInView(gridRef, { once: true, margin: "-60px" });
   const [active, setActive] = useState<WorkCategory>(categories[0]);
   const [page, setPage] = useState(1);
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+
+  // Deep-link support: a `#build-<slug>` hash (e.g. from the hero's featured cards)
+  // jumps straight to that build — switching to its category + page, then scrolling
+  // to and briefly highlighting the card.
+  useEffect(() => {
+    const goToHash = () => {
+      const match = window.location.hash.match(/^#build-(.+)$/);
+      if (!match) return;
+      const slug = match[1];
+      const target = items.find((i) => slugify(i.title) === slug);
+      if (!target) return;
+
+      setActive(target.group);
+      const indexInGroup = items
+        .filter((i) => i.group === target.group)
+        .findIndex((i) => i.title === target.title);
+      setPage(Math.floor(indexInGroup / PER_PAGE) + 1);
+      setHighlighted(target.title);
+
+      // Wait for the category/page state to render the card, then scroll to it.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document
+            .getElementById(`build-${slug}`)
+            ?.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+
+      const t = setTimeout(() => setHighlighted(null), 2400);
+      return () => clearTimeout(t);
+    };
+
+    goToHash();
+    window.addEventListener("hashchange", goToHash);
+    return () => window.removeEventListener("hashchange", goToHash);
+  }, [items]);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
@@ -77,13 +119,24 @@ export default function WorkGrid({
       {/* Filtered cards */}
       {filtered.length > 0 ? (
         <>
-        <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
-          {paged.map((project) => (
-            <GlowCard
+        <div ref={gridRef} className="grid grid-cols-1 gap-7 md:grid-cols-2">
+          {paged.map((project, i) => (
+            <motion.div
               key={project.title}
+              custom={i}
+              variants={cardRise}
+              initial="hidden"
+              animate={gridInView ? "show" : "hidden"}
+            >
+            <GlowCard
+              id={`build-${slugify(project.title)}`}
               customSize
               glowColor="red"
-              className="group !rounded-2xl"
+              className={`group !rounded-2xl scroll-mt-28 transition-shadow duration-500 ${
+                highlighted === project.title
+                  ? "ring-2 ring-red ring-offset-2 ring-offset-ink"
+                  : ""
+              }`}
             >
               {/* Thumbnail (1fr row) */}
               <div
@@ -112,6 +165,7 @@ export default function WorkGrid({
                 <p className="mt-2 text-sm leading-relaxed text-bone-dim">{project.description}</p>
               </div>
             </GlowCard>
+            </motion.div>
           ))}
         </div>
 

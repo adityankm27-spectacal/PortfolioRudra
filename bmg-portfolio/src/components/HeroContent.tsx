@@ -3,6 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { profile, specialties, heroTags } from "@/lib/content";
+import { slugify } from "@/lib/utils";
+import CountUp from "@/components/CountUp";
 import HireButton from "@/components/HireButton";
 import { PixelCanvas } from "@/components/ui/pixel-perfect-hero";
 import { RobloxMark } from "@/components/RobloxBrand";
@@ -270,25 +272,32 @@ export default function HeroContent({
         {/* Ground tick band */}
         <div className="tick-band relative z-10 h-6 w-full opacity-70" />
 
-        {/* Featured builds strip (mobile / tablet — on lg+ these flank the figure) */}
+        {/* Featured builds (mobile / tablet — on lg+ these flank the figure).
+            Thumb-scrollable snap rail so all four builds get a real, tappable
+            card instead of an uneven 3-across grid. */}
         {featured.length > 0 && (
           <div className="relative z-10 mt-6 lg:hidden">
-            <p className="eyebrow mb-3 flex items-center gap-2 text-bone">
-              <span className="h-1.5 w-1.5 rounded-full bg-red" /> Featured Builds
-            </p>
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+            <div className="mb-3 flex items-center justify-between">
+              <p className="eyebrow flex items-center gap-2 text-bone">
+                <span className="h-1.5 w-1.5 rounded-full bg-red" /> Featured Builds
+              </p>
+              <span className="text-[0.58rem] uppercase tracking-[0.2em] text-bone-dim/60">
+                Swipe →
+              </span>
+            </div>
+            <div className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-8 sm:px-8 [&::-webkit-scrollbar]:hidden">
               {featured.map((build) => (
                 <a
                   key={build.title}
-                  href="#work"
-                  className="group relative block aspect-video overflow-hidden rounded-xl border border-line bg-ink-card"
+                  href={`#build-${slugify(build.title)}`}
+                  className="group relative block aspect-[4/3] w-44 shrink-0 snap-start overflow-hidden rounded-xl border border-line bg-ink-card sm:w-52"
                 >
                   {build.hasImage && (
                     <Image
                       src={build.image}
                       alt={build.title}
                       fill
-                      sizes="(max-width: 768px) 33vw, 240px"
+                      sizes="208px"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   )}
@@ -296,7 +305,7 @@ export default function HeroContent({
                   <span className="absolute right-2 top-2 rounded-full border border-line/80 bg-ink/60 px-2 py-0.5 text-[0.58rem] font-medium uppercase tracking-wider text-bone backdrop-blur-sm">
                     {build.metric}
                   </span>
-                  <h3 className="absolute inset-x-2 bottom-2 truncate font-display text-[0.7rem] uppercase leading-tight tracking-tight text-bone sm:text-sm">
+                  <h3 className="absolute inset-x-3 bottom-2.5 truncate font-display text-sm uppercase leading-tight tracking-tight text-bone">
                     {build.title}
                   </h3>
                 </a>
@@ -316,16 +325,25 @@ export default function HeroContent({
                 <p key={i}>{para}</p>
               ))}
             </div>
-            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+            {/* Stats — bordered chip rail on phones (scrolls with the thumb),
+                plain inline row from sm+ where there's width to breathe. */}
+            <div className="mt-5 -mx-5 flex gap-2.5 overflow-x-auto px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:mt-4 sm:flex-wrap sm:gap-x-6 sm:gap-y-3 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
               {[
                 { v: "9.7M", l: "Top build visits" },
                 { v: `${profile.yearsExperience}+`, l: `Years since ${profile.since}` },
                 { v: "6+", l: "Showcases" },
                 { v: "7+", l: "Studios worked with" },
               ].map((s) => (
-                <div key={s.l}>
-                  <p className="font-display text-lg leading-none text-bone">{s.v}</p>
-                  <p className="mt-1 text-[0.58rem] uppercase tracking-wider text-bone-dim">{s.l}</p>
+                <div
+                  key={s.l}
+                  className="shrink-0 rounded-xl border border-line bg-ink-card/50 px-4 py-3 sm:shrink sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0"
+                >
+                  <p className="font-display text-xl leading-none text-bone sm:text-lg">
+                    <CountUp value={s.v} />
+                  </p>
+                  <p className="mt-1.5 whitespace-nowrap text-[0.58rem] uppercase tracking-wider text-bone-dim sm:mt-1">
+                    {s.l}
+                  </p>
                 </div>
               ))}
             </div>
@@ -356,7 +374,7 @@ export default function HeroContent({
 function FeaturedCard({ build }: { build: FeaturedBuild }) {
   return (
     <a
-      href="#work"
+      href={`#build-${slugify(build.title)}`}
       className="group relative block aspect-video w-full overflow-hidden rounded-xl border border-line bg-ink-card shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors hover:border-bone-dim/40"
     >
       {build.hasImage && (

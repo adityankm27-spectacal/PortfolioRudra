@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { profile, navLinks } from "@/lib/content";
 import { RobloxMark, RobloxWordmark } from "@/components/RobloxBrand";
 
@@ -22,6 +23,12 @@ export default function Footer() {
               {link.label}
             </a>
           ))}
+          <Link
+            href="/terms"
+            className="eyebrow text-bone-dim transition-colors hover:text-bone"
+          >
+            Terms
+          </Link>
         </nav>
 
         <div className="flex flex-col gap-2 sm:items-end">

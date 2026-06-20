@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Mail, MessageCircle, Gamepad2, Copy, Check, ArrowUpRight, Zap, Clock, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
 import { contact, profile } from "@/lib/content";
 import { RobloxMark } from "@/components/RobloxBrand";
+import { fadeUp, cardRise } from "@/lib/motion";
 
 type Method = {
   key: string;
@@ -51,15 +52,6 @@ const trustBadges = [
 
 const commissions = ["Game Building", "Environment Design", "World Creation", "Roblox Development"];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
-
 function ContactPanel({ method, index }: { method: Method; index: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -93,7 +85,7 @@ function ContactPanel({ method, index }: { method: Method; index: number }) {
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
       custom={index}
-      variants={fadeUp}
+      variants={cardRise}
       onMouseMove={onMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

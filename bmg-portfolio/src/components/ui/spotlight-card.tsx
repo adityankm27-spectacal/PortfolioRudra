@@ -2,6 +2,7 @@ import React, { useEffect, useRef, ReactNode } from 'react';
 
 interface GlowCardProps {
   children: ReactNode;
+  id?: string;
   className?: string;
   glowColor?: 'blue' | 'purple' | 'green' | 'red' | 'orange';
   size?: 'sm' | 'md' | 'lg';
@@ -26,6 +27,7 @@ const sizeMap = {
 
 const GlowCard: React.FC<GlowCardProps> = ({
   children,
+  id,
   className = '',
   glowColor = 'blue',
   size = 'md',
@@ -162,6 +164,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
       <style dangerouslySetInnerHTML={{ __html: beforeAfterStyles }} />
       <div
         ref={cardRef}
+        id={id}
         data-glow
         style={getInlineStyles()}
         className={`

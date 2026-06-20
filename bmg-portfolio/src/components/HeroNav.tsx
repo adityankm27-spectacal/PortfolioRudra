@@ -49,7 +49,7 @@ function Tab({
     >
       <a
         href={href}
-        className="block cursor-pointer px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mix-blend-difference"
+        className="block cursor-pointer px-4 py-2 text-xs font-semibold uppercase tracking-wider text-bone"
       >
         {children}
       </a>
@@ -61,7 +61,7 @@ function Cursor({ position }: { position: Position }) {
   return (
     <motion.li
       animate={position}
-      className="absolute z-0 h-8 rounded-full bg-bone"
+      className="absolute z-0 h-8 rounded-full bg-white/15 border border-white/20"
     />
   );
 }

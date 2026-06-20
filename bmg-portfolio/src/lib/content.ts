@@ -7,12 +7,12 @@ export const profile = {
   role: "Roblox Environment Builder",
   age: 18,
   since: 2020,
-  yearsExperience: 4,
+  yearsExperience: 6,
   tagline: "Creating amazing gaming experiences.",
   intro:
     "Transforming ideas into immersive Roblox environments with attention to detail and technical excellence.",
   bio: [
-    "I'm BUILDERMANGUY31, an 18-year-old passionate Roblox builder with 4+ years of experience creating immersive environments and structures. I have a proven track record of delivering high-quality builds that exceed expectations.",
+    "I'm BUILDERMANGUY31, an 18-year-old passionate Roblox builder with 6+ years of experience creating immersive environments and structures. I have a proven track record of delivering high-quality builds that exceed expectations.",
     "I specialize in creating detailed, functional, and optimized builds that enhance player experiences. My expertise spans both Roblox Studio and Blender, allowing me to create custom assets and environments that stand out.",
     "My builds have been featured in popular Roblox games with over 9.7 million and 1.6 million visits, demonstrating my ability to create engaging content that players love.",
   ],
@@ -36,6 +36,41 @@ export const contact = {
   robloxUrl: "https://www.roblox.com/users/profile",
 };
 
+// Terms of Service — mirrors the live site (bmgportfolio.chaoslabs.cc/terms).
+export const termsOfService = {
+  lastUpdated: "May 8, 2025",
+  sections: [
+    {
+      heading: "Introduction",
+      items: [
+        { label: "1.1", text: "By agreeing to these terms we can make sure we both are on the same page and won't have any conflicts in the future." },
+        { label: "1.2", text: "If you fail to follow these terms and conditions there will be no refund given if any, or if no payment is made the project would be declared cancelled." },
+        { label: "1.3", text: "Make sure you read through each and every point before moving forward." },
+      ],
+    },
+    {
+      heading: "Rules and Regulations",
+      items: [
+        { label: "2.1", text: "Any payment above 3000 Robux ($10) would need to be paid 50% upfront." },
+        { label: "OR", text: "" },
+        { label: "2.2", text: "A legitimate proof that the payment will be done." },
+        { label: "2.3", text: "We both understand the boundaries and respect that we should have for each other, so PLEASE do not cross it." },
+        { label: "2.4", text: "Minor changes are okay, but asking for major changes after finalizing the work and the payment will require an extra charge." },
+      ],
+    },
+    {
+      heading: "Confidentiality",
+      items: [
+        { label: "3.1", text: "You hereby agree, when you start working with me, that the builds I make for you I can use for my portfolio (unless and until it's meant to not be published)." },
+        { label: "3.2", text: "I will make sure no information about the game gets leaked without your permission." },
+        { label: "3.3", text: "When you write a review for my work, you make sure you are allowing me to use your Discord ID and profile picture as a showcase in my portfolio." },
+      ],
+    },
+  ],
+  closing:
+    "BY CONTINUING WORKING WITH ME YOU MAKE SURE YOU HAVE READ THROUGH THE TERMS OF SERVICE AND HAVE REACHED A CONCLUSION OF “AGREEING” TO IT.",
+};
+
 export const navLinks = [
   // "About" lives in the hero fold, so it points back to the top.
   { label: "About", href: "#top" },
@@ -53,7 +88,7 @@ export const specialties = [
   "Optimization",
 ];
 
-export const heroTags = ["Roblox Studio", "Environments", "4+ Years"];
+export const heroTags = ["Roblox Studio", "Environments", "6+ Years"];
 
 // The standout builds surfaced directly in the hero as a "Featured Builds" strip.
 // `image` should match an existing screenshot in /public/images/work/.

@@ -5,6 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SectionHeading from "./SectionHeading";
+import CountUp from "./CountUp";
+import { cardRise } from "@/lib/motion";
 import { reviews, reviewStats, type Review } from "@/lib/content";
 
 const initialsOf = (name: string) =>
@@ -191,7 +193,9 @@ function TrustBar() {
         {reviewStats.map((s, i) => (
           <div key={s.label} className={cn("flex flex-col items-center gap-1 px-4 py-6 text-center", i < 2 && "border-b border-line sm:border-b-0")}>
             {s.value === "5.0" && <Stars rating={5} />}
-            <p className="font-display text-2xl leading-none text-bone sm:text-3xl">{s.value}</p>
+            <p className="font-display text-2xl leading-none text-bone sm:text-3xl">
+              <CountUp value={s.value} />
+            </p>
             <p className="text-[0.62rem] uppercase tracking-[0.16em] text-bone-dim">{s.label}</p>
           </div>
         ))}
@@ -199,15 +203,6 @@ function TrustBar() {
     </motion.div>
   );
 }
-
-const gridItem = {
-  hidden: { opacity: 0, y: 28 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
 
 export default function Reviews() {
   const featured = reviews.find((r) => r.featured) ?? reviews[0];
@@ -240,7 +235,7 @@ export default function Reviews() {
           {/* Featured spans 2 cols on lg, full row on top */}
           <motion.div
             custom={0}
-            variants={gridItem}
+            variants={cardRise}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
             className="lg:col-span-2 lg:row-span-2 lg:h-full"
@@ -252,7 +247,7 @@ export default function Reviews() {
             <motion.div
               key={r.author}
               custom={i + 1}
-              variants={gridItem}
+              variants={cardRise}
               initial="hidden"
               animate={inView ? "show" : "hidden"}
             >

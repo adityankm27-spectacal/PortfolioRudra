@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Archivo_Black, Press_Start_2P } from "next/font/google";
+import { Geist, Archivo_Black, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/content";
+import MotionProvider from "@/components/MotionProvider";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
@@ -42,10 +43,12 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${archivoBlack.variable} ${pressStart2P.variable}`}
+      className={`${geist.variable} ${archivoBlack.variable} ${pressStart2P.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-ink text-bone">{children}</body>
+      <body className="min-h-screen bg-ink text-bone">
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }
