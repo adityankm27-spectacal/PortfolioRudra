@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { navLinks, profile } from "@/lib/content";
+import Image from "next/image";
+import { navLinks } from "@/lib/content";
 import HireButton from "@/components/HireButton";
 import HeroNav from "@/components/HeroNav";
 import { RobloxMark } from "@/components/RobloxBrand";
@@ -27,12 +28,14 @@ export default function SiteNav() {
         {/* Logo */}
         <div className="flex flex-1 items-center gap-3">
           <a href="#top" className="flex items-center gap-2.5 group">
-            <span className="grid h-7 w-7 place-items-center bg-red text-white font-display text-sm leading-none">
-              B
-            </span>
-            <span className="hidden sm:inline font-display text-sm tracking-tight">
-              {profile.name}
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="Builder Man"
+              width={134}
+              height={68}
+              priority
+              className="h-16 w-auto"
+            />
           </a>
           <span className="hidden items-center gap-1.5 rounded-full border border-line px-2.5 py-1 lg:inline-flex">
             <RobloxMark uid="nav-rbx" className="h-3.5 w-3.5 text-red" />
