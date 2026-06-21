@@ -168,7 +168,7 @@ export default function HeroContent({
       {/* Vignette */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,var(--color-ink)_92%)]" />
 
-      <div className="relative z-30 mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-8 pt-6 sm:px-8">
+      <div className="relative z-30 mx-auto flex w-full max-w-[2000px] flex-1 flex-col px-5 pb-8 pt-6 sm:px-8 lg:px-12 2xl:px-20">
         {/* Top: tags + availability */}
         <div style={uiStyle} className="flex items-start justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
@@ -216,14 +216,14 @@ export default function HeroContent({
         <div className="relative flex flex-1 items-center justify-center">
           {/* Featured builds flanking the figure (lg+) — z-30 sits above the headline so cards neatly clip any overflowing text */}
           {leftBuilds.length > 0 && (
-            <div className="absolute inset-y-0 left-0 z-30 hidden w-[18rem] flex-col justify-center gap-3 lg:flex xl:w-[22rem]">
+            <div className="absolute inset-y-0 left-0 z-30 hidden w-[clamp(18rem,26vw,40rem)] flex-col justify-center gap-3 lg:flex">
               {leftBuilds.map((build) => (
                 <FeaturedCard key={build.title} build={build} />
               ))}
             </div>
           )}
           {rightBuilds.length > 0 && (
-            <div className="absolute inset-y-0 right-0 z-30 hidden w-[18rem] flex-col justify-center gap-3 lg:flex xl:w-[22rem]">
+            <div className="absolute inset-y-0 right-0 z-30 hidden w-[clamp(18rem,26vw,40rem)] flex-col justify-center gap-3 lg:flex">
               {rightBuilds.map((build) => (
                 <FeaturedCard key={build.title} build={build} />
               ))}
@@ -233,9 +233,9 @@ export default function HeroContent({
           {/* Giant headline — constrained to center zone on lg+ so it never overlaps the side cards */}
           <h1
             style={headlineStyle}
-            className="pointer-events-none absolute inset-y-0 z-10 flex select-none items-center justify-center overflow-hidden px-1 text-center font-display uppercase leading-[0.82] tracking-[-0.045em] text-bone will-change-transform left-0 right-0 lg:left-[18rem] lg:right-[18rem] xl:left-[22rem] xl:right-[22rem]"
+            className="pointer-events-none absolute inset-y-0 z-10 flex select-none items-center justify-center overflow-hidden px-1 text-center font-display uppercase leading-[0.82] tracking-[-0.045em] text-bone will-change-transform left-0 right-0 lg:left-[clamp(18rem,26vw,40rem)] lg:right-[clamp(18rem,26vw,40rem)]"
           >
-            <span className="block w-full whitespace-nowrap text-center text-[1.4rem] sm:text-[2.2rem] md:text-[3rem] lg:text-[1.5rem] xl:text-[1.95rem]" style={{ fontFamily: "var(--font-retro)" }}>
+            <span className="block w-full whitespace-nowrap text-center text-[1.4rem] sm:text-[2.2rem] md:text-[3rem] lg:text-[clamp(1.5rem,2.4vw,3.4rem)]" style={{ fontFamily: "var(--font-retro)" }}>
               BUILDERMANGUY<span className="text-red">31</span>
             </span>
           </h1>
@@ -251,7 +251,7 @@ export default function HeroContent({
           {/* The figure */}
           <div
             style={figureStyle}
-            className="relative z-20 h-[44vh] max-h-[500px] min-h-[300px] w-full max-w-[440px] will-change-transform"
+            className="relative z-20 h-[44vh] max-h-[640px] min-h-[300px] w-full max-w-[clamp(360px,30vw,620px)] will-change-transform"
           >
             {hasPhoto ? (
               <Image
