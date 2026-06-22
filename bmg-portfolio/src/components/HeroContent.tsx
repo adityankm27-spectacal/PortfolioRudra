@@ -57,9 +57,11 @@ export default function HeroContent({
     transform: `translateY(${lerp(0, -120, p)}px) scale(${lerp(1, 0.82, p)})`,
     opacity: lerp(1, 0, Math.min(p / 0.85, 1)),
   };
+  // Headline recedes: drifts up and shrinks *behind* the figure (same
+  // direction as the figure) so it never slides forward across the person.
   const headlineStyle = {
-    transform: `translateY(${lerp(0, 140, p)}px) scale(${lerp(1, 1.12, p)})`,
-    opacity: lerp(1, 0.15, Math.min(p / 0.9, 1)),
+    transform: `translateY(${lerp(0, -90, p)}px) scale(${lerp(1, 0.9, p)})`,
+    opacity: lerp(1, 0, Math.min(p / 0.8, 1)),
   };
   const radarStyle = {
     transform: `scale(${lerp(1, 1.6, p)}) rotate(${lerp(0, 90, p)}deg)`,
@@ -122,7 +124,7 @@ export default function HeroContent({
         style={radarStyle}
         className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-screen items-center justify-center will-change-transform"
       >
-        <RobloxCoreLogo className="h-[78vw] max-h-[600px] w-[78vw] max-w-[600px] opacity-[0.45] [filter:drop-shadow(0_0_60px_rgba(168,163,154,0.22))_drop-shadow(0_0_140px_rgba(232,38,29,0.10))]" />
+        <RobloxCoreLogo className="h-[78vw] max-h-[600px] w-[78vw] max-w-[600px] -translate-y-12 opacity-[0.45] [filter:drop-shadow(0_0_60px_rgba(168,163,154,0.22))_drop-shadow(0_0_140px_rgba(232,38,29,0.10))]" />
       </div>
 
       {/* Roblox glyphs + technical HUD readouts */}
@@ -375,7 +377,7 @@ function FeaturedCard({ build }: { build: FeaturedBuild }) {
   return (
     <a
       href={`#build-${slugify(build.title)}`}
-      className="group relative block aspect-video w-full overflow-hidden rounded-xl border border-line bg-ink-card shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors hover:border-bone-dim/40"
+      className="group relative block aspect-[4/3] w-full overflow-hidden rounded-xl border border-line bg-ink-card shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors hover:border-bone-dim/40"
     >
       {build.hasImage && (
         <Image

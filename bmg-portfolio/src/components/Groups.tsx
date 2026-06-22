@@ -46,55 +46,43 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
   };
 
   const Media = (
-    <div className="relative h-60 overflow-hidden sm:h-72 lg:h-full lg:min-h-[24rem]">
-      <Image
-        src={g.cover}
-        alt={g.name}
-        fill
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-      />
-      {/* cinematic overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/15 via-transparent to-ink" />
-      {/* red ambient lighting */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-red/20 via-red/5 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
-      {/* vignette */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{ boxShadow: "inset 0 0 120px 30px rgba(10,10,11,0.85)" }}
-      />
-      {/* light noise texture */}
-      <div className="grain pointer-events-none absolute inset-0 opacity-60" />
+    <div className="relative flex h-44 flex-col items-center justify-center gap-4 overflow-hidden bg-ink/50 p-6 sm:h-52 lg:h-full lg:min-h-[15rem]">
+      {/* ambient glow */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-red/10 via-transparent to-red/[0.04]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red/10 blur-[60px]" />
 
       {/* floating tag + members */}
-      <div className="absolute left-5 top-5 flex items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-line/70 bg-ink/70 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-bone backdrop-blur-md">
-          {g.tag}
-        </span>
-      </div>
+      <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-line/70 bg-ink/70 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-bone backdrop-blur-md">
+        {g.tag}
+      </span>
       <span className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-red/30 bg-red/15 px-3 py-1 text-[0.62rem] font-semibold text-bone backdrop-blur-md">
         <Users className="h-3 w-3 text-red" />
         {g.members}
       </span>
 
-      {/* logo + name pinned to bottom of media */}
-      <div className="absolute inset-x-5 bottom-5 flex items-center gap-3">
-        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-line/70 shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
-          <Image src={g.logo} alt="" fill sizes="48px" className="object-cover" />
-        </div>
-        <div className="min-w-0">
-          <h3 className="font-display text-xl uppercase leading-none tracking-tight text-bone sm:text-2xl">{g.name}</h3>
-          <p className="mt-1 text-xs text-bone-dim">
-            By {g.creator} · <span className="text-red">{g.rank}</span>
-          </p>
-        </div>
+      {/* logo */}
+      <div className="relative grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl border border-line/70 bg-ink shadow-[0_10px_30px_rgba(0,0,0,0.55)] transition-transform duration-500 group-hover:scale-105 sm:h-24 sm:w-24">
+        <Image
+          src={g.logo}
+          alt={g.name}
+          width={96}
+          height={96}
+          className="h-[86%] w-[86%] rounded-xl object-contain"
+        />
+      </div>
+
+      {/* name */}
+      <div className="relative min-w-0 text-center">
+        <h3 className="font-display text-lg uppercase leading-none tracking-tight text-bone sm:text-xl">{g.name}</h3>
+        <p className="mt-1 text-xs text-bone-dim">
+          By {g.creator} · <span className="text-red">{g.rank}</span>
+        </p>
       </div>
     </div>
   );
 
   const Content = (
-    <div className="relative flex flex-col justify-center p-6 sm:p-8">
+    <div className="relative flex flex-col justify-center p-5 sm:p-7">
       <p className="eyebrow mb-2 text-red">{g.role}</p>
       <p className="max-w-xl text-sm leading-relaxed text-bone-dim sm:text-base">{g.blurb}</p>
 
@@ -153,7 +141,7 @@ function CollabCard({ g, index }: { g: Group; index: number }) {
         }}
       />
 
-      <div className={cn("relative grid lg:grid-cols-[1.45fr_1fr]", reversed && "lg:[direction:rtl]")}>
+      <div className={cn("relative grid lg:grid-cols-[0.8fr_1fr]", reversed && "lg:[direction:rtl]")}>
         <div className="lg:[direction:ltr]">{Media}</div>
         <div className="lg:[direction:ltr]">{Content}</div>
       </div>
