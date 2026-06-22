@@ -314,7 +314,7 @@ export const groups: Group[] = [
 export const groupTrust = [
   { value: "175K+", label: "Community Members" },
   { value: "10+", label: "Collaborations" },
-  { value: "5.0", label: "Client Reviews" },
+  { value: "4.5", label: "Client Reviews" },
 ];
 
 // The four categories shown as filter tabs in "Selected Builds".
@@ -667,11 +667,38 @@ export const reviews: Review[] = [
     rating: 4,
     accent: "#ef4444",
   },
+  {
+    quote:
+      "Hired BMG for our tycoon's lobby and main map — he absolutely delivered. Clear communication the whole way through and hit every deadline. Already planning the next commission.",
+    author: "vexnoir",
+    role: "Studio Owner",
+    project: "Lobby & Map",
+    rating: 5,
+    accent: "#06b6d4",
+  },
+  {
+    quote:
+      "Great eye for lighting and atmosphere. Took a little back-and-forth to nail the exact style we wanted, but the final result was well worth it. Will work with him again.",
+    author: "mqpeolly",
+    role: "Client",
+    project: "Atmosphere & Lighting",
+    rating: 4,
+    accent: "#a855f7",
+  },
+  {
+    quote:
+      "Commissioned a set of low-poly props and they came out clean and fully optimized. Fast turnaround and fair pricing — would recommend to anyone needing custom assets.",
+    author: "Renlux_Dev",
+    role: "Client",
+    project: "Prop Pack",
+    rating: 5,
+    accent: "#f97316",
+  },
 ];
 
 // Aggregate social-proof figures shown above the testimonials.
 export const reviewStats = [
-  { value: "5.0", label: "Average Rating" },
+  { value: "4.5", label: "Average Rating" },
   { value: "20+", label: "Successful Collaborations" },
   { value: "100K+", label: "Combined Community" },
   { value: "7+", label: "Studios & Creators" },

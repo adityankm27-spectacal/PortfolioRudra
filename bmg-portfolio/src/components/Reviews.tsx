@@ -19,17 +19,25 @@ const initialsOf = (name: string) =>
     .toUpperCase();
 
 function Stars({ rating, size = "sm" }: { rating: number; size?: "sm" | "lg" }) {
+  const dim = size === "lg" ? "h-4 w-4" : "h-3.5 w-3.5";
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className={cn(
-            size === "lg" ? "h-4 w-4" : "h-3.5 w-3.5",
-            i < rating ? "fill-red text-red" : "text-line"
-          )}
-        />
-      ))}
+      {Array.from({ length: 5 }).map((_, i) => {
+        const fill = Math.max(0, Math.min(1, rating - i)); // 0 → 1 fill for this star
+        return (
+          <span key={i} className="relative inline-block">
+            <Star className={cn(dim, "text-line")} />
+            {fill > 0 && (
+              <span
+                className="absolute inset-y-0 left-0 overflow-hidden"
+                style={{ width: `${fill * 100}%` }}
+              >
+                <Star className={cn(dim, "fill-red text-red")} />
+              </span>
+            )}
+          </span>
+        );
+      })}
     </div>
   );
 }
@@ -192,7 +200,7 @@ function TrustBar() {
       <div className="relative grid grid-cols-2 divide-line sm:grid-cols-4 sm:divide-x">
         {reviewStats.map((s, i) => (
           <div key={s.label} className={cn("flex flex-col items-center gap-1 px-4 py-6 text-center", i < 2 && "border-b border-line sm:border-b-0")}>
-            {s.value === "5.0" && <Stars rating={5} />}
+            {s.label === "Average Rating" && <Stars rating={parseFloat(s.value)} />}
             <p className="font-display text-2xl leading-none text-bone sm:text-3xl">
               <CountUp value={s.value} />
             </p>
