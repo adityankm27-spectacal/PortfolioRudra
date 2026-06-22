@@ -331,9 +331,9 @@ export default function HeroContent({
                 plain inline row from sm+ where there's width to breathe. */}
             <div className="mt-5 -mx-5 flex gap-2.5 overflow-x-auto px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:mt-4 sm:flex-wrap sm:gap-x-6 sm:gap-y-3 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
               {[
-                { v: "9.7M", l: "Top build visits" },
+                { v: "20.5M", l: "Top build visits" },
                 { v: `${profile.yearsExperience}+`, l: `Years since ${profile.since}` },
-                { v: "6+", l: "Showcases" },
+                { v: "50+", l: "Showcases" },
                 { v: "7+", l: "Studios worked with" },
               ].map((s) => (
                 <div
