@@ -98,24 +98,24 @@ export const featuredBuilds: {
   image: string;
 }[] = [
   {
-    title: "Foggy Downtown Boulevard",
-    metric: "9.7M visits",
-    image: "/images/work/foggy-city-street.jpg",
-  },
-  {
-    title: "Grand Cathedral",
-    metric: "1.6M visits",
-    image: "/images/work/cathedral.jpg",
-  },
-  {
-    title: "Torii Shrine Grounds",
+    title: "Paris Olympic Arena",
     metric: "Featured",
-    image: "/images/work/torii-garden.jpg",
+    image: "/images/work/structure-paris-arena.jpg",
   },
   {
-    title: "Alpine Gate Facility",
+    title: "Cinema Hall",
     metric: "Featured",
-    image: "/images/work/mountain-facility.jpg",
+    image: "/images/work/interior-10-cinema-hall.jpg",
+  },
+  {
+    title: "Golden Canyon",
+    metric: "Featured",
+    image: "/images/work/environment-05-golden-canyon.jpg",
+  },
+  {
+    title: "Mecha Companion Bot",
+    metric: "Featured",
+    image: "/images/work/model-03-mecha-companion.jpg",
   },
 ];
 
