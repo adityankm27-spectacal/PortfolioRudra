@@ -239,7 +239,7 @@ export const groups: Group[] = [
     members: "25.5K+",
     rank: "Supporter",
     creator: "SlicerStudios",
-    logo: "/images/groups/icons/slicer-studios-icon.jpg",
+    logo: "/images/groups/icons/slicer-studios.png",
     cover: "/images/work/torii-garden.jpg",
     role: "Environment Builder",
     blurb:
@@ -258,7 +258,7 @@ export const groups: Group[] = [
     members: "13K+",
     rank: "Contributor",
     creator: "evan",
-    logo: "/images/groups/icons/ovalodo-icon.jpg",
+    logo: "/images/groups/icons/ovalodo.png",
     cover: "/images/work/japanese-street.jpg",
     role: "Creative Contributor",
     blurb:
@@ -277,7 +277,7 @@ export const groups: Group[] = [
     members: "11.8K+",
     rank: "Contributor",
     creator: "Versed",
-    logo: "/images/groups/icons/ravyns-rise-icon.jpg",
+    logo: "/images/groups/icons/ravyns-rise.png",
     cover: "/images/work/river-valley.jpg",
     role: "Open-World Builder",
     blurb:
@@ -296,7 +296,7 @@ export const groups: Group[] = [
     members: "10.5K+",
     rank: "Supporter",
     creator: "alexjouq",
-    logo: "/images/groups/icons/rlightning-studios-icon.jpg",
+    logo: "/images/groups/icons/rlightning-studios.png",
     cover: "/images/work/glass-house.jpg",
     role: "Environment Builder",
     blurb:
