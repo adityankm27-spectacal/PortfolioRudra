@@ -390,7 +390,8 @@ function FeaturedCard({ build }: { build: FeaturedBuild }) {
           src={build.image}
           alt={build.title}
           fill
-          sizes="240px"
+          quality={90}
+          sizes="(min-width: 1024px) min(26vw, 40rem), 240px"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       )}
