@@ -98,24 +98,24 @@ export const featuredBuilds: {
   image: string;
 }[] = [
   {
-    title: "Paris Olympic Arena",
+    title: "Sunlit Hobbit Burrow",
     metric: "Featured",
-    image: "/images/work/structure-paris-arena.jpg",
+    image: "/images/featured/hobbit-burrow.jpg",
   },
   {
-    title: "Cinema Hall",
+    title: "Domed Sports Arena",
     metric: "Featured",
-    image: "/images/work/interior-10-cinema-hall.jpg",
+    image: "/images/featured/domed-arena.jpg",
   },
   {
-    title: "Golden Canyon",
+    title: "Skyline Rail Construction",
     metric: "Featured",
-    image: "/images/work/environment-05-golden-canyon.jpg",
+    image: "/images/featured/skyline-rail.jpg",
   },
   {
-    title: "Mecha Companion Bot",
+    title: "Corner Convenience Store",
     metric: "Featured",
-    image: "/images/work/model-03-mecha-companion.jpg",
+    image: "/images/featured/convenience-store.jpg",
   },
 ];
 
@@ -182,7 +182,7 @@ export const groups: Group[] = [
     members: "55.7K+",
     rank: "Contributor",
     creator: "Kayocletian",
-    logo: "/images/groups/icons/squid-game-international-icon.jpg",
+    logo: "/images/groups/icons/squid-game-international.webp",
     cover: "/images/work/foggy-city-street.jpg",
     role: "Environment & Map Contributor",
     blurb:
@@ -201,7 +201,7 @@ export const groups: Group[] = [
     members: "33.1K+",
     rank: "Development Contributor",
     creator: "one",
-    logo: "/images/groups/icons/illuminate-studios-icon.jpg",
+    logo: "/images/groups/icons/illuminate-studios.webp",
     cover: "/images/work/expo-hall.jpg",
     role: "Development Contributor",
     blurb:
@@ -220,7 +220,7 @@ export const groups: Group[] = [
     members: "26.9K+",
     rank: "Recruit",
     creator: "joshuaholic",
-    logo: "/images/groups/icons/combat-assault-team-icon.jpg",
+    logo: "/images/groups/icons/combat-assault-team.webp",
     cover: "/images/work/mountain-facility.jpg",
     role: "Map & Environment Builder",
     blurb:
