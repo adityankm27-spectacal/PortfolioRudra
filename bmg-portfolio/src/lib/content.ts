@@ -319,9 +319,9 @@ export const groupTrust = [
 
 // The four categories shown as filter tabs in "Selected Builds".
 export const workCategories = [
-  "Environments",
   "Structures",
   "Interiors",
+  "Environments",
   "Models",
 ] as const;
 
