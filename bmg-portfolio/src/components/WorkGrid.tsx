@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import type { WorkCategory } from "@/lib/content";
 import { GlowCard } from "@/components/ui/spotlight-card";
 import { slugify } from "@/lib/utils";
@@ -31,6 +31,22 @@ export default function WorkGrid({
   const [active, setActive] = useState<WorkCategory>(categories[0]);
   const [page, setPage] = useState(1);
   const [highlighted, setHighlighted] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<WorkItem | null>(null);
+
+  // Close the lightbox on Escape and lock body scroll while it's open.
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightbox]);
 
   // Deep-link support: a `#build-<slug>` hash (e.g. from the hero's featured cards)
   // jumps straight to that build — switching to its category + page, then scrolling
@@ -138,9 +154,15 @@ export default function WorkGrid({
                   : ""
               }`}
             >
-              {/* Thumbnail (1fr row) */}
-              <div
-                className={`grain relative flex aspect-video items-end overflow-hidden rounded-xl bg-gradient-to-br ${project.gradient}`}
+              {/* Thumbnail (1fr row) — click to open the lightbox */}
+              <button
+                type="button"
+                onClick={() => project.hasImage && setLightbox(project)}
+                aria-label={`View ${project.title} full size`}
+                disabled={!project.hasImage}
+                className={`grain relative flex aspect-video w-full items-end overflow-hidden rounded-xl bg-gradient-to-br text-left ${project.gradient} ${
+                  project.hasImage ? "cursor-zoom-in" : "cursor-default"
+                }`}
               >
                 {project.hasImage && (
                   <Image
@@ -148,14 +170,14 @@ export default function WorkGrid({
                     alt={project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
                 <span className="absolute right-3 top-3 rounded-full border border-line/80 bg-ink/60 px-2.5 py-1 text-[0.62rem] uppercase tracking-wider text-bone backdrop-blur-sm">
                   {project.category}
                 </span>
-              </div>
+              </button>
 
               {/* Text (auto row) */}
               <div className="px-1 pb-1">
@@ -219,6 +241,62 @@ export default function WorkGrid({
           </p>
         </div>
       )}
+
+      {/* Lightbox overlay */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/90 p-4 backdrop-blur-sm sm:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setLightbox(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={lightbox.title}
+          >
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Close"
+              className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-line bg-ink/60 text-bone transition-colors hover:border-bone/40 hover:text-white"
+            >
+              ✕
+            </button>
+            <motion.figure
+              className="relative flex max-h-full w-full max-w-5xl flex-col items-center"
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative max-h-[80vh] w-full overflow-hidden rounded-xl">
+                <Image
+                  src={lightbox.image}
+                  alt={lightbox.title}
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 1024px) 100vw, 1024px"
+                  className="h-auto max-h-[80vh] w-full object-contain"
+                />
+              </div>
+              <figcaption className="mt-4 text-center">
+                <span className="block text-[0.62rem] uppercase tracking-wider text-red">
+                  {lightbox.category}
+                </span>
+                <h3 className="mt-1 font-display text-2xl uppercase leading-tight tracking-tight text-bone">
+                  {lightbox.title}
+                </h3>
+                <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-bone-dim">
+                  {lightbox.description}
+                </p>
+              </figcaption>
+            </motion.figure>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

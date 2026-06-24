@@ -338,266 +338,498 @@ export const projects: {
 }[] = [
   // ---- Structures ----
   {
-    title: "Foggy Downtown Boulevard",
-    category: "Cityscape",
+    title: "Sunlit Hobbit Burrow",
+    category: "Earth Home",
     group: "Structures",
     description:
-      "A fog-drenched city street at night, neon-lit high-rises fading into teal haze.",
-    image: "/images/work/foggy-city-street.jpg",
+      "A grass-roofed hillside burrow with round doors and arched windows, bathed in golden dawn light.",
+    image: "/images/work/structure-hobbit-burrow.jpg",
   },
   {
-    title: "Transit Platform A&B",
-    category: "Transit Station",
-    group: "Structures",
-    description:
-      "A fog-soaked station platform under a sweeping steel canopy, lit by hazy morning sun.",
-    image: "/images/work/train-platform.jpg",
-  },
-  {
-    title: "Forest Viaduct",
-    category: "Bridge / Viaduct",
-    group: "Structures",
-    description:
-      "A weathered stone arch viaduct crossing a misty river, framed by towering pines.",
-    image: "/images/work/stone-viaduct.jpg",
-  },
-  {
-    title: "Grand Cathedral",
-    category: "Cathedral",
-    group: "Structures",
-    description:
-      "A vaulted cathedral interior with golden chandeliers and flickering flame sconces.",
-    image: "/images/work/cathedral.jpg",
-  },
-  {
-    title: "Alpine Gate Facility",
-    category: "Facility",
-    group: "Structures",
-    description:
-      "A snowbound mountain checkpoint with control towers, roads, and rugged terrain.",
-    image: "/images/work/mountain-facility.jpg",
-  },
-  {
-    title: "Rainfall Glass House",
-    category: "Modern Home",
-    group: "Structures",
-    description:
-      "A modern glass-walled home glowing warmly through a tropical night rainstorm.",
-    image: "/images/work/glass-house.jpg",
-  },
-  {
-    title: "Old Town Night Market",
-    category: "Street Scene",
-    group: "Structures",
-    description:
-      "A lantern-lit Japanese street at dusk, lined with timber shopfronts and warm light.",
-    image: "/images/work/japanese-street.jpg",
-  },
-  {
-    title: "Torii Shrine Grounds",
+    title: "Torii Shrine Grove",
     category: "Shrine",
     group: "Structures",
     description:
-      "A serene shrine clearing crowned by a great torii gate and blooming cherry blossoms.",
-    image: "/images/work/torii-garden.jpg",
+      "A great torii gate rising over a fenced shrine clearing, framed by cherry blossoms and misty hills.",
+    image: "/images/work/structure-torii-grove.jpg",
   },
   {
-    title: "Main Street Storefront",
-    category: "Storefront",
-    group: "Structures",
-    description:
-      "A brick-and-stucco retail facade with display windows and a clean storefront entrance.",
-    image: "/images/work/brick-storefront.jpg",
-  },
-  {
-    title: "National Bank",
-    category: "Civic Building",
-    group: "Structures",
-    description:
-      "A neoclassical bank with towering columns and a grand pedimented entrance.",
-    image: "/images/work/national-bank.jpg",
-  },
-  {
-    title: "Skyline Under Construction",
+    title: "Skyline Rail Construction",
     category: "Cityscape",
     group: "Structures",
     description:
-      "A high-rise build site with tower cranes, scaffolding, and an elevated rail line.",
-    image: "/images/work/city-construction.jpg",
+      "A commuter train on elevated tracks beside towering cranes and a high-rise under construction.",
+    image: "/images/work/structure-rail-construction.jpg",
   },
   {
-    title: "Downtown Boulevard",
+    title: "Festival Backstreet",
+    category: "Street Scene",
+    group: "Structures",
+    description:
+      "A narrow brick alley strung with glowing bulb lights, graffiti and lamp posts under a dusky sky.",
+    image: "/images/work/structure-festival-alley.jpg",
+  },
+  {
+    title: "Domed Sports Arena",
+    category: "Stadium",
+    group: "Structures",
+    description:
+      "A vast domed stadium interior with tiered crowd stands, a hanging scoreboard and a floodlit field.",
+    image: "/images/work/structure-domed-stadium.jpg",
+  },
+  {
+    title: "Downtown Avenue",
     category: "Cityscape",
     group: "Structures",
     description:
-      "A sprawling downtown street flanked by skyscrapers under a bright open sky.",
-    image: "/images/work/downtown-street.jpg",
+      "A wide multi-lane boulevard cutting between glass skyscrapers under a bright, cloud-dappled sky.",
+    image: "/images/work/structure-downtown-avenue.jpg",
+  },
+  {
+    title: "Old European Street",
+    category: "Street Scene",
+    group: "Structures",
+    description:
+      "A long avenue of weathered period townhouses fading toward the city under a soft rose-tinted sky.",
+    image: "/images/work/structure-old-european-street.jpg",
+  },
+  {
+    title: "Primary School Yard",
+    category: "School",
+    group: "Structures",
+    description:
+      "A cheerful school courtyard with cloud-patterned walls, colourful running tracks and a clock-front entrance.",
+    image: "/images/work/structure-primary-school.jpg",
+  },
+  {
+    title: "Voxel Shrine Ruins",
+    category: "Voxel Build",
+    group: "Structures",
+    description:
+      "A blocky, glowing shrine of suspended red beams and chains rising over lantern-lit stone steps at night.",
+    image: "/images/work/structure-voxel-shrine.jpg",
+  },
+  {
+    title: "Green-Roof Manor",
+    category: "Manor House",
+    group: "Structures",
+    description:
+      "A symmetrical three-storey manor with a green hip roof, columned portico and tall chimney stacks.",
+    image: "/images/work/structure-manor-house.jpg",
+  },
+  {
+    title: "Lantern-Lit Facade",
+    category: "Facade",
+    group: "Structures",
+    description:
+      "An ornate stucco building face glowing under wall lanterns against a star-filled night sky.",
+    image: "/images/work/structure-lantern-facade.jpg",
+  },
+  {
+    title: "Winter Pagoda",
+    category: "Pagoda",
+    group: "Structures",
+    description:
+      "A tiered Japanese pagoda with red-trimmed eaves and stone lanterns standing in a snow-dusted grove.",
+    image: "/images/work/structure-winter-pagoda.jpg",
+  },
+  {
+    title: "Rainy Backstreet",
+    category: "Street Scene",
+    group: "Structures",
+    description:
+      "A moody, rain-soaked alley of brick and timber walls, graffiti and dim neon glow at night.",
+    image: "/images/work/structure-rainy-backstreet.jpg",
+  },
+  {
+    title: "Open-Air Pavilion",
+    category: "Pavilion",
+    group: "Structures",
+    description:
+      "A vast open pavilion of soaring steel canopies over a grassy field, ringed by small cottages.",
+    image: "/images/work/structure-open-pavilion.jpg",
+  },
+  {
+    title: "Paris Olympic Arena",
+    category: "Stadium",
+    group: "Structures",
+    description:
+      "A beach-volleyball arena set before the Eiffel Tower, decked in Paris 2024 Olympic branding.",
+    image: "/images/work/structure-paris-arena.jpg",
+  },
+  {
+    title: "Coastal Embankment",
+    category: "Waterfront",
+    group: "Structures",
+    description:
+      "A lamp-lined seawall road beside a grassy slope and a row of colourful gabled houses.",
+    image: "/images/work/structure-coastal-embankment.jpg",
+  },
+  {
+    title: "Highway Fuel Station",
+    category: "Fuel Station",
+    group: "Structures",
+    description:
+      "A wide green-trimmed fuel station canopy over rows of pumps on an open roadside lot.",
+    image: "/images/work/structure-fuel-station.jpg",
+  },
+  {
+    title: "Tenement Street",
+    category: "Street Scene",
+    group: "Structures",
+    description:
+      "A classic city block of brick tenements with fire escapes, lit windows and a long open road.",
+    image: "/images/work/structure-tenement-street.jpg",
   },
 
   // ---- Interiors ----
   {
-    title: "Moonlit Memorial Garden",
-    category: "Night Scene",
-    group: "Interiors",
-    description:
-      "A hushed lantern-lit garden after dark, all soft shadow and glowing pools of light.",
-    image: "/images/work/night-garden.jpg",
-  },
-  {
-    title: "Executive Office",
-    category: "Office Interior",
-    group: "Interiors",
-    description:
-      "A polished executive suite with a tufted leather sofa, hardwood floors, and warm trim.",
-    image: "/images/work/luxury-office.jpg",
-  },
-  {
-    title: "Expo Arena Hall",
-    category: "Arena Interior",
-    group: "Interiors",
-    description:
-      "A vast multi-level event hall with exposed trusses, sweeping staircases, and stage lighting.",
-    image: "/images/work/expo-hall.jpg",
-  },
-  {
-    title: "Starship Quarters",
-    category: "Sci-Fi Interior",
-    group: "Interiors",
-    description:
-      "A sci-fi sleeping bay with backlit crew pods, panelled walls, and ambient deck lighting.",
-    image: "/images/work/spaceship-interior.jpg",
-  },
-  {
-    title: "Bank Banking Hall",
-    category: "Lobby",
-    group: "Interiors",
-    description:
-      "A skylit banking hall with arched teller windows, checkered floors, and a mezzanine.",
-    image: "/images/work/bank-lobby.jpg",
-  },
-  {
-    title: "Precinct Break Room",
-    category: "Office Interior",
-    group: "Interiors",
-    description:
-      "A lived-in office break room with filing cabinets, tile floors, and fluorescent light.",
-    image: "/images/work/office-breakroom.jpg",
-  },
-  {
-    title: "Corner Store",
+    title: "Corner Convenience Store",
     category: "Retail Interior",
     group: "Interiors",
     description:
-      "A stocked convenience store with shelving, coolers, and a worn checkout counter.",
-    image: "/images/work/convenience-store.jpg",
+      "A stocked convenience store with lit shelving, soda coolers, a TV and a checkout counter with stools.",
+    image: "/images/work/interior-01-convenience-store.jpg",
   },
   {
-    title: "Collapsed Bunker",
+    title: "Arena Atrium",
+    category: "Arena Interior",
+    group: "Interiors",
+    description:
+      "A vast multi-level event hall with exposed trusses, twin sweeping staircases and stage lighting.",
+    image: "/images/work/interior-02-arena-atrium.jpg",
+  },
+  {
+    title: "Dim Corridor",
     category: "Interior Scene",
     group: "Interiors",
     description:
-      "A blown-out underground bunker — cracked walls, scattered rubble, and emergency lighting.",
-    image: "/images/work/bunker.jpg",
+      "A long shadowy hallway lined with doors, lit by rows of warm yellow ceiling tubes.",
+    image: "/images/work/interior-03-dim-corridor.jpg",
+  },
+  {
+    title: "Starship Pod Quarters",
+    category: "Sci-Fi Interior",
+    group: "Interiors",
+    description:
+      "A sci-fi sleeping bay with backlit red crew pods, panelled walls and ambient deck lighting.",
+    image: "/images/work/interior-04-pod-quarters.jpg",
+  },
+  {
+    title: "Marble Barbershop",
+    category: "Salon Interior",
+    group: "Interiors",
+    description:
+      "An opulent marble-walled barbershop with vintage chairs, ornate consoles and a sea-view archway.",
+    image: "/images/work/interior-05-marble-barbershop.jpg",
+  },
+  {
+    title: "Security Control Room",
+    category: "Sci-Fi Interior",
+    group: "Interiors",
+    description:
+      "A red-lit underground control room with consoles, monitors and a 'Security Breach' alert panel.",
+    image: "/images/work/interior-06-control-room.jpg",
+  },
+  {
+    title: "Mahogany Lounge",
+    category: "Lounge Interior",
+    group: "Interiors",
+    description:
+      "A grand wood-panelled lounge with a roaring fireplace, library shelves and a city-view window.",
+    image: "/images/work/interior-07-mahogany-lounge.jpg",
+  },
+  {
+    title: "Gallery Room",
+    category: "Gallery Interior",
+    group: "Interiors",
+    description:
+      "A warm wood-trimmed gallery room with parquet floors, an arched passage and a framed seascape.",
+    image: "/images/work/interior-08-gallery-room.jpg",
+  },
+  {
+    title: "Modern Gym",
+    category: "Gym Interior",
+    group: "Interiors",
+    description:
+      "A sleek black-and-wood gym with neon ceiling strips, racked weights and a 'Work Hard Stay Hard' wall.",
+    image: "/images/work/interior-09-modern-gym.jpg",
+  },
+  {
+    title: "Cinema Hall",
+    category: "Theater Interior",
+    group: "Interiors",
+    description:
+      "A plush cinema hall of tiered leather recliners, mood lighting and colourful abstract wall panels.",
+    image: "/images/work/interior-10-cinema-hall.jpg",
+  },
+  {
+    title: "Home Theater",
+    category: "Theater Interior",
+    group: "Interiors",
+    description:
+      "A cosy wood-clad home theater with twin projector screens, warm spotlights and low bench seating.",
+    image: "/images/work/interior-11-home-theater.jpg",
+  },
+  {
+    title: "Elevator Lobby",
+    category: "Lobby",
+    group: "Interiors",
+    description:
+      "A cool blue-lit lobby with twin elevators marked A and B, glass partitions and potted plants.",
+    image: "/images/work/interior-12-elevator-lobby.jpg",
+  },
+  {
+    title: "Cargo Bay",
+    category: "Sci-Fi Interior",
+    group: "Interiors",
+    description:
+      "A dark industrial cargo bay with riveted walls, cyan spotlights and stacked metal crates.",
+    image: "/images/work/interior-13-cargo-bay.jpg",
   },
 
   // ---- Environments ----
   {
-    title: "Lakeside Willows",
-    category: "Landscape",
-    group: "Environments",
-    description:
-      "A tranquil lakeside at dusk with weeping willows, supply crates, and soft fading light.",
-    image: "/images/work/lakeside-willows.jpg",
-  },
-  {
-    title: "Grassland Shrine",
-    category: "Landscape",
-    group: "Environments",
-    description:
-      "An open sunlit field of swaying grass and wildflowers around a small lone shrine.",
-    image: "/images/work/grassland-shrine.jpg",
-  },
-  {
-    title: "Sunlit River Valley",
-    category: "Landscape",
-    group: "Environments",
-    description:
-      "A glittering river winding through rolling green hills under a bright midday sky.",
-    image: "/images/work/river-valley.jpg",
-  },
-  {
-    title: "Countryside Barn",
+    title: "Barn Meadow",
     category: "Rural Scene",
     group: "Environments",
     description:
-      "A timber barn on a grassy hillside, a dirt track curving past sunlit trees.",
-    image: "/images/work/countryside-barn.jpg",
+      "A sunlit grassy meadow with a dirt path winding past a lone tree toward a weathered barn.",
+    image: "/images/work/environment-01-barn-meadow.jpg",
   },
   {
-    title: "Autumn Harvest Village",
-    category: "Village",
-    group: "Environments",
-    description:
-      "A golden-hour village with a steepled church, pumpkin patches, and falling leaves.",
-    image: "/images/work/autumn-village.jpg",
-  },
-  {
-    title: "Misty Pine Highlands",
+    title: "Waterfall Cove",
     category: "Landscape",
     group: "Environments",
     description:
-      "A sun-hazed forest clearing of towering pines and tall grass framing a distant peak.",
-    image: "/images/work/misty-forest.jpg",
+      "A misty rocky cove where a churning waterfall spills into still water under a hazy sky.",
+    image: "/images/work/environment-02-waterfall-cove.jpg",
+  },
+  {
+    title: "State Park Gate",
+    category: "Landscape",
+    group: "Environments",
+    description:
+      "A timber park pavilion and signpost framing a forest trail under tall sunlit pines.",
+    image: "/images/work/environment-03-state-park-gate.jpg",
+  },
+  {
+    title: "Misty Meadow",
+    category: "Landscape",
+    group: "Environments",
+    description:
+      "A hazy golden meadow of tall grass and scattered pines glowing in soft morning sun.",
+    image: "/images/work/environment-04-misty-meadow.jpg",
+  },
+  {
+    title: "Golden Canyon",
+    category: "Landscape",
+    group: "Environments",
+    description:
+      "A sun-drenched rocky canyon bathed in warm golden haze, framed by mossy boulders and trees.",
+    image: "/images/work/environment-05-golden-canyon.jpg",
+  },
+  {
+    title: "Fern Forest",
+    category: "Landscape",
+    group: "Environments",
+    description:
+      "A serene pine forest clearing dotted with ferns and pink wildflowers under a soft blue sky.",
+    image: "/images/work/environment-06-fern-forest.jpg",
   },
 
   // ---- Models ----
   {
-    title: "Tudor Cottage",
-    category: "Building Model",
+    title: "Hooded Assassin Bundle",
+    category: "Character Model",
     group: "Models",
     description:
-      "A detailed half-timbered Tudor cottage with a mossy green roof and glowing windows.",
-    image: "/images/work/timber-house.jpg",
+      "A hooded dark-clad assassin avatar with armoured pauldrons, sash and a masked helm.",
+    image: "/images/work/model-01-hooded-assassin.jpg",
   },
   {
-    title: "Coffee Kiosk",
-    category: "Prop / Kiosk",
+    title: "Raven Skull Staff",
+    category: "Weapon Model",
     group: "Models",
     description:
-      "A standalone open-air coffee stand with slatted pergola, signage, and counter fittings.",
-    image: "/images/work/coffee-kiosk.jpg",
+      "A long-beaked raven-skull staff carved with a spiral sigil atop a slender spiked shaft.",
+    image: "/images/work/model-02-raven-skull-staff.jpg",
   },
   {
-    title: "Medieval Shop",
-    category: "Building Model",
+    title: "Mecha Companion Bot",
+    category: "Character Model",
     group: "Models",
     description:
-      "A compact medieval stone-and-timber shop with a striped awning and arched oak door.",
-    image: "/images/work/medieval-shop.jpg",
+      "A floating low-poly mascot bot with rabbit-ear antennae and glowing teal eyes.",
+    image: "/images/work/model-03-mecha-companion.jpg",
   },
   {
-    title: "Government Complex",
-    category: "Building Model",
+    title: "Iron Cross Pendant",
+    category: "Accessory Model",
     group: "Models",
     description:
-      "A massive institutional block — modular wings, ribbon windows, and a fortified perimeter.",
-    image: "/images/work/institutional-block.jpg",
+      "A weathered stone iron-cross pendant inset with a deep-red core, strung on a cord.",
+    image: "/images/work/model-04-iron-cross-pendant.jpg",
   },
   {
-    title: "Metro Train Carriage",
+    title: "Clergy Vestments",
+    category: "Character Model",
+    group: "Models",
+    description:
+      "A clergy avatar in a crisp white cassock, black trousers and a cross-marked cap.",
+    image: "/images/work/model-05-clergy-vestments.jpg",
+  },
+  {
+    title: "Crow Skull Relic",
+    category: "Prop Model",
+    group: "Models",
+    description:
+      "A close-up crow-skull relic of dark bone set with a glowing red hexagonal gem.",
+    image: "/images/work/model-06-crow-skull-relic.jpg",
+  },
+  {
+    title: "Burger Delivery Scooter",
     category: "Vehicle Model",
     group: "Models",
     description:
-      "A bright transit carriage interior with rows of orange seats and grab poles under sunlit windows.",
-    image: "/images/work/train-carriage.jpg",
+      "A playful delivery scooter built around a stacked cheeseburger with a rear cargo box.",
+    image: "/images/work/model-07-burger-scooter.jpg",
   },
   {
-    title: "Jungle Temple Ruins",
+    title: "Watermelon Scooter",
+    category: "Vehicle Model",
+    group: "Models",
+    description:
+      "A whimsical scooter sculpted from a ripe watermelon with rind wheels and a slice seat.",
+    image: "/images/work/model-08-watermelon-scooter.jpg",
+  },
+  {
+    title: "Vintage Steam Locomotive",
+    category: "Vehicle Model",
+    group: "Models",
+    description:
+      "A classic 19th-century steam engine and passenger carriage in deep red and black.",
+    image: "/images/work/model-09-steam-locomotive.jpg",
+  },
+  {
+    title: "Block Cat Pet",
+    category: "Character Model",
+    group: "Models",
+    description:
+      "A cubic black-cat pet with big round eyes, pink-lined ears and stubby paws.",
+    image: "/images/work/model-10-block-cat-pet.jpg",
+  },
+  {
+    title: "Luminous Butterfly",
+    category: "Prop Model",
+    group: "Models",
+    description:
+      "A teal-winged butterfly rimmed with glowing dots, wings edged in fine light.",
+    image: "/images/work/model-11-luminous-butterfly.jpg",
+  },
+  {
+    title: "Barrel Armor Set",
+    category: "Accessory Model",
+    group: "Models",
+    description:
+      "A rugged wooden barrel-plate armour set — helm, chest, pauldrons and bracers.",
+    image: "/images/work/model-12-barrel-armor.jpg",
+  },
+  {
+    title: "Amethyst Dagger",
+    category: "Weapon Model",
+    group: "Models",
+    description:
+      "A short steel dagger with a faceted purple gem in the guard and a wrapped grip.",
+    image: "/images/work/model-13-amethyst-dagger.jpg",
+  },
+  {
+    title: "Crimson Katana",
+    category: "Weapon Model",
+    group: "Models",
+    description:
+      "A slim katana with a red-wrapped tsuka and matching black saya with crimson accents.",
+    image: "/images/work/model-14-crimson-katana.jpg",
+  },
+  {
+    title: "Ring Blade",
+    category: "Weapon Model",
+    group: "Models",
+    description:
+      "A circular bladed ring weapon with hooked edges and a leather-bound central grip.",
+    image: "/images/work/model-15-ring-blade.jpg",
+  },
+  {
+    title: "Wooden Toy Sword",
+    category: "Weapon Model",
+    group: "Models",
+    description:
+      "A stylised wood-grain toy sword with a carved crossguard and ridged handle.",
+    image: "/images/work/model-16-wooden-toy-sword.jpg",
+  },
+  {
+    title: "Low-Poly Heroine",
+    category: "Character Model",
+    group: "Models",
+    description:
+      "A slim low-poly female character in a cropped top, shorts and heeled shoes.",
+    image: "/images/work/model-17-lowpoly-heroine.jpg",
+  },
+  {
+    title: "Tower Cottage",
     category: "Building Model",
     group: "Models",
     description:
-      "A weathered stone temple half-swallowed by roots, fronted by a worn flagstone path.",
-    image: "/images/work/temple-ruins.jpg",
+      "A cosy cottage with a purple-shingled roof, round stone turret and golden finial.",
+    image: "/images/work/model-18-tower-cottage.jpg",
+  },
+  {
+    title: "Timber Cottage",
+    category: "Building Model",
+    group: "Models",
+    description:
+      "A half-timbered cottage with a red-tile roof, stone base and brick chimney.",
+    image: "/images/work/model-19-timber-cottage.jpg",
+  },
+  {
+    title: "Seaside Coffee Kiosk",
+    category: "Building Model",
+    group: "Models",
+    description:
+      "An open-air coffee kiosk with a slatted pergola, signage and full counter fittings by the shore.",
+    image: "/images/work/model-20-coffee-kiosk.jpg",
+  },
+  {
+    title: "Medieval Storefront",
+    category: "Building Model",
+    group: "Models",
+    description:
+      "A stone-and-timber medieval shop with a striped awning and an arched oak doorway.",
+    image: "/images/work/model-21-medieval-storefront.jpg",
+  },
+  {
+    title: "Bone Recurve Bow",
+    category: "Weapon Model",
+    group: "Models",
+    description:
+      "A sinuous bone-carved recurve bow paired with a single fletched arrow.",
+    image: "/images/work/model-22-bone-recurve-bow.jpg",
+  },
+  {
+    title: "Ornate Greatsword",
+    category: "Weapon Model",
+    group: "Models",
+    description:
+      "A broad ceremonial greatsword with gilded filigree along the blade and crossguard.",
+    image: "/images/work/model-23-ornate-greatsword.jpg",
+  },
+  {
+    title: "GUN-R Airliner",
+    category: "Vehicle Model",
+    group: "Models",
+    description:
+      "A full passenger jet in white with a blue tail, branded 'GUN-R Airlines'.",
+    image: "/images/work/model-24-gunr-airliner.jpg",
   },
 ];
 

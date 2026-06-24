@@ -263,6 +263,12 @@ export default function HeroContent({
                 priority
                 unoptimized
                 sizes="(max-width: 768px) 90vw, 480px"
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, black 72%, transparent 99%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 72%, transparent 99%)",
+                }}
                 className="object-contain object-bottom drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)]"
               />
             ) : (
