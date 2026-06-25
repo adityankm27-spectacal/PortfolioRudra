@@ -31,10 +31,10 @@ export default function SiteNav() {
             <Image
               src="/images/logo.png"
               alt="Builder Man"
-              width={134}
-              height={68}
+              width={245}
+              height={80}
               priority
-              className="h-16 w-auto"
+              className="h-10 w-auto"
             />
           </a>
           <span className="hidden items-center gap-1.5 rounded-full border border-line px-2.5 py-1 lg:inline-flex">
